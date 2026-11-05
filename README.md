@@ -8,6 +8,10 @@ An offline, interactive teaching companion for reading **existing Unreal Engine 
 
 ![Interactive timing chart](docs/timing-companion.png)
 
+## English measurement guide
+
+Read the **[standalone illustrated guide](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/measurement-notes.html)** for metric scopes, all 12 windows, window means versus sample maxima, and an eight-frame worked excerpt. It includes three figures and the measurement limits; no Chinese tutorial or Unreal installation is required to follow it. The existing interactive charts remain available above.
+
 ## Start / 开始使用
 
 1. Download this repository as a ZIP and extract it, or download `index.html` alone.
@@ -36,7 +40,8 @@ These are static rendering comparisons at approximately one second of system age
 
 ## Files and verification
 
-- `index.html`: single-file interactive reader, version 1.0.2, including the two original CSV exports.
+- `index.html`: single-file interactive reader, version 1.0.2, including the two original CSV exports; now with an optional English-guide link.
+- `measurement-notes.html` and `docs/measurement/`: standalone English explanation with three checked figures; original measurements are unchanged.
 - `data/逐轮统计.csv`: 12 window summaries.
 - `data/逐帧关键列.csv`: all 40,353 key-frame rows.
 - `data/实测汇总.json`: original measured summary.
