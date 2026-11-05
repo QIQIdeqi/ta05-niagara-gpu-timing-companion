@@ -44,6 +44,12 @@ These are static rendering comparisons at approximately one second of system age
 
 The original 12 CSV hashes were checked against frozen records. Means and sample maxima were recomputed from all key frames. Browser checks covered eight chart combinations, 24 peak-location cases and a 390px responsive viewport; the original CSV export bytes were checked. This does not establish an independent reader reproduction or a physical-phone test.
 
+## Questions and reproduction / 疑问与复现反馈
+
+If a chart, CSV export or explanation does not match what you expected, [open a focused issue](https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/issues/new?template=reproduction.md). State the step you reached, expected versus observed behaviour, selected metric/window/frame, and the relevant environment. Reading without running UE is welcome; mark it as reading rather than a reproduction.
+
+有疑问可使用[复现反馈模板](https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/issues/new?template=reproduction.md)，留下最短步骤和实际差异。不要求上传整个工程；未知值保留未知，原CSV不要覆盖。自己的UE测试属于另一次实验，需单独记录条件，不能与这里的静态渲染数据混算。请先移除账号、令牌、私有路径与未获准公开的素材。
+
 ## Attribution and scope
 
 Created for **77的技术美术实战**. AI assisted with code, wording and layout; numerical claims are grounded in the recorded CSV data and checks. No Unreal Engine binaries, third-party UE assets, private project files or paid Knowledge Planet packages are included. This repository does not change the original teaching project's licence; see [RIGHTS.md](RIGHTS.md).
