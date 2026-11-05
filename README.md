@@ -4,6 +4,8 @@
 
 An offline, interactive teaching companion for reading **existing Unreal Engine Niagara rendering measurements**. It contains 12 measured windows and 40,353 sampled frames. This is a data-reading example, not a new benchmark, optimisation tool, Unreal plugin, or game.
 
+**[Open the interactive companion / 直接打开交互伴读](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/)**
+
 ![Interactive timing chart](docs/timing-companion.png)
 
 ## Start / 开始使用
