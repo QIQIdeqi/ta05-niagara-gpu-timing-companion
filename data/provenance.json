@@ -1,0 +1,35 @@
+{
+  "source": "TA05 original frozen measurement CSV, October 2026; original teaching article linked in README",
+  "source_sha256": {
+    "00_A_small.csv": "817a6f36a2ab75fa62ebc0bdfcf07312824ce104ebcda1bdce9b138301068f5b",
+    "01_A_large.csv": "a6b5e9ba1c28ea384c5fd4319771472eab39a5eade155b9d700dec840df7c5c8",
+    "02_B_complex.csv": "45e24ed0d0fc5ee3d433888c69ce6156c92381de4604767daf070fc3e2e42f7c",
+    "03_Baseline_no_render.csv": "564db9370a22f6174a296dfff52ae525459c73c1d49829bdd7a7e9716c8ef652",
+    "04_B_complex.csv": "4b8635a3dd8b185c879e00c1174203e6779894ee49657be6087cdafb6c83eaa6",
+    "05_A_small.csv": "a322e9c7391ca7851f26d21edfc81cb87b92fe2b7a59462c63b2ae134c81256a",
+    "06_Baseline_no_render.csv": "6cf3621857fceb1aaeb1173bc61f6a04e95f94ae18e3437ee0471d0a984fd198",
+    "07_A_large.csv": "f6a8fb279ad93928820424ce88bbaf4f73a148c3cdf65440fae1bfa0c29d4ffb",
+    "08_Baseline_no_render.csv": "1c11fd8e6a765dd319ce4f1a1d7ac31bf813825ca634675c97ced0c2cbc86707",
+    "09_B_complex.csv": "7d7f4fd7b67ffca9ab0eb1c7a71f499461b9f35d595c8f9b62a8244724630c9b",
+    "10_A_large.csv": "06acd8c9b7da107c241e829c94878fbab43ed7695dd6de02b246a03fd87fb116",
+    "11_A_small.csv": "72f49601cb20e838a9c95f17125e2ff4f002a7b1c4986945d9859e85eaa9670d",
+    "逐轮统计.csv": "6eaac86ad7fbc5c000a28d950b8525be574d1b0ffef48fc59812501e54555b70",
+    "逐帧关键列.csv": "7e5f6a6218edeb7ddfa4960c69bdfe833b61ebb6b73d4b5f4cb9c54585dfc951",
+    "实测汇总.json": "9fd5709cc94dca46c2614737b7913a8ddee72fafd5d90e16669f899390975de5"
+  },
+  "runs": 12,
+  "numeric_frames": 40353,
+  "means_recomputed_from_all_key_frames": true,
+  "sample_maxima_recomputed": true,
+  "raw_run_hashes_match_frozen_summary": true,
+  "new_UE_experiments": 0,
+  "scope": "2026年10月TA05既有数据的免费交互伴读；非新采集、非UE工程、非性能优化工具。",
+  "measurement": "UE5.8.2 / D3D11 SM5 / RTX4070 Laptop / 1280x720 / FOV50 / Seed77；CPU模拟推进60×1/60秒后暂停，GPU继续绘制；预热5秒，计时约10秒，每条件3次交错运行。",
+  "limitations": [
+    "横轴为窗口内采样帧索引，不能当作技能时间轴。",
+    "统计不剔帧，不扣背景，不插值，不自动排序判优。",
+    "采样峰值不等于完整技能生命周期峰值。",
+    "三轮范围不是置信区间，公开计数不是读者复现。",
+    "仅带关键列与汇总，原完整CSV的SHA列明但原大CSV不重复打包。"
+  ]
+}
