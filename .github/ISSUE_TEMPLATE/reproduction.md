@@ -10,6 +10,7 @@ title: '[TA05] '
 - [ ] 打开在线伴读
 - [ ] 下载 HTML 后离线打开
 - [ ] 导出 CSV
+- [ ] 用原始数据完成读数练习，未运行 UE / Completed the reading exercise without running UE
 - [ ] 自己在 UE 中另做了实验（这是新实验，不是本仓库重新计时）
 
 ## 2. 我的问题 / Question or unexpected result
@@ -27,6 +28,12 @@ title: '[TA05] '
 若涉及图表，请说明：透明阶段或整帧 GPU、均值或采样最大值、线性或对数、所选窗口及帧索引。截图可选，不需要上传整个工程。
 
 For chart questions, include the metric, statistic, axis scale, selected window and frame index. A whole Unreal project is not needed.
+
+读数练习可补这三项 / For the reading exercise
+
+- 改了什么，哪些条件保持一致 / Changed variable and fixed conditions
+- 比较的窗口、口径和毫秒数 / Compared windows, timing scope, statistic and values in ms
+- 读数支持的结论，或卡在哪一步 / Supported conclusion or the step you got stuck on
 
 ## 4. 必要环境 / Relevant environment
 

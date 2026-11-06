@@ -14,6 +14,12 @@ Read the **[standalone illustrated guide](https://qiqideqi.github.io/ta05-niagar
 
 ## Start / 开始使用
 
+**[Try the online reading exercise / 直接做读数练习](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/#reading-exercise)**
+
+Choose one size or material comparison. Record the changed variable, timing scope, selected windows and measured values, then write what the readings support. You can do this in your browser without opening Unreal Engine.
+
+选一组尺寸或材质对照，记下变量、计时口径、窗口和读数，再写一句结论。完成后可用[反馈模板](https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/issues/new?template=reproduction.md)记录结论或卡点。离线用法如下。
+
 1. Download and extract the **[latest offline ZIP](https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/releases/latest)**. Open `index.html` or `measurement-notes.html` directly from the extracted folder.
 2. Open `index.html` in a modern browser. The page is in Chinese; all chart data is embedded. No account, network, Unreal installation, CDN, or build step is required.
 3. Switch **透明阶段** (GPU/Translucency) versus **整帧 GPU** (GPUTime), **均值** (mean) versus **采样最大值** (sample maximum), and linear versus logarithmic axes.
