@@ -14,7 +14,7 @@ Read the **[standalone illustrated guide](https://qiqideqi.github.io/ta05-niagar
 
 ## Start / 开始使用
 
-1. Download this repository as a ZIP and extract it, or download `index.html` alone.
+1. Download and extract the **[latest offline ZIP](https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/releases/latest)**. Open `index.html` or `measurement-notes.html` directly from the extracted folder.
 2. Open `index.html` in a modern browser. The page is in Chinese; all chart data is embedded. No account, network, Unreal installation, CDN, or build step is required.
 3. Switch **透明阶段** (GPU/Translucency) versus **整帧 GPU** (GPUTime), **均值** (mean) versus **采样最大值** (sample maximum), and linear versus logarithmic axes.
 4. Choose a measured window and click **定位所选范围的首个采样最大值** to locate its first sampled maximum. The slider inspects individual sampled frames.
