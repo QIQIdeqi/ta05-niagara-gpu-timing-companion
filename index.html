@@ -10,6 +10,12 @@
 <ol><li>选择「透明阶段 GPU/Translucency」和「一轮全部帧的算术均值」。对照尺寸 16 与 80 的简单材质，或对照尺寸 80 的两种材质。记下固定条件、改了什么，以及比较的窗口和毫秒数。</li>
 <li>切换到「整帧 GPUTime」。看三轮结果能否支持同样的结论。再选一轮定位采样峰值，记录帧索引。</li>
 <li>用一句话写下读数支持的结论，以及你还需要测什么。</li></ol>
+<details id="recompute-readings"><summary>用公开 CSV 复算均值和采样最大值</summary>
+<p>按 <code>run</code> 取出同一窗口的全部样本，对 <code>GPUTime</code>（整帧）和 <code>GPU/Translucency</code>（透明阶段）分别计算。均值等于该列样本之和除以样本数，采样最大值取该列的最大读数。若多帧同为最大值，记录最先达到它的帧。</p>
+<p>先在图表里选 <code>01 A_large</code>，分别定位两列的采样最大值，再展开下方答案核对。帧索引从 0 开始。</p>
+<details><summary>核对第 01 轮读数</summary><p>这一轮有 3,162 帧。整帧 GPU 均值约 3.162814 ms，采样最大值 24.4183 ms，首次出现在第 3139 帧。透明阶段均值约 0.057145 ms，采样最大值 0.0952 ms，首次出现在第 3148 帧。两次峰值相差 9 帧，分别对应两列各自的最大读数。</p></details>
+<p>要复算全部 12 个窗口，可按 <a href="https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion#recompute-the-readings--自行复算读数">仓库的复算步骤</a>下载源码，再运行 <code>python verify_readings.py</code>（Python 3.8+）。</p>
+</details>
 <p><strong>反馈格式</strong>　实际做到哪一步｜改变的变量｜窗口与帧索引｜透明阶段或整帧 GPU｜均值或采样最大值（ms）｜你的结论或卡点。</p>
 <p>读完文章、完成读数、自己在 UE 中另做实验，都可以反馈。按实际完成的步骤填写即可。</p>
 <p><a href="https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/issues/new?template=reproduction.md" target="_blank" rel="noopener noreferrer">用 GitHub 模板提交读数或问题</a>（需登录 GitHub）</p></section>
