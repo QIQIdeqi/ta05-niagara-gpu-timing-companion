@@ -47,7 +47,7 @@
 </table>
 <p>镜头预热组在配置中写入 Engine Warm Up Count = 0，并开启 Use Camera Cut for Warm Up。开启后，引擎会根据输出起点之前的 Camera Cut 区段计算预热，表中的 0 是写入值。 在 v0.3 同机复跑日志中，L1 和 L2 都以 16 帧预热进入 WarmingUp。L1 写入 16，L2 写入 0 且由镜头段推导。两组的预热帧数相同，但预热时的序列求值不同。</p>
 <p>先看相机与时间采样日志，再把三条短输出的第 54 帧与连续参照的第 54 帧并排看。引擎预热让引擎推进，但镜头预热还会求值输出起点前的序列。渲染历史、依赖深度的 GPU 粒子和本次 CPU 实验需分别判断。 <a href="https://dev.epicgames.com/documentation/unreal-engine/cinematic-rendering-image-quality-settings-in-unreal-engine?lang=en-US">Epic MRQ 图像质量设置</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/setting-up-pre-roll">Epic 预滚设置</a></p>
-<h2 id="section-2">3. 跑缓存切入对照</h2>
+<h2 id="section-2">3. 跑缓存切入对照</h2><p><a href="ta15-frame56-samples/">补充图解：第 56 帧的两个时间子样本</a>。看反序复测中三种条件的缓存绑定、执行状态和实际年龄。</p>
 <ol>
 <li>在 Sequencer 用 Niagara Sim Cache 缓存轨录制测试系统。确保完整区段在目标帧能读到缓存，先渲染一遍确认该组有预期粒子。</li>
 <li>把这条序列复制两份，绑定同一套缓存素材和轨道。保留 C0 完整区段 [0,59)，两份短区段设为 [56,59)，两份都用 Repeat、首循环偏移 224 ticks。先核对两个短区段使用相同的缓存内容和偏移。</li>

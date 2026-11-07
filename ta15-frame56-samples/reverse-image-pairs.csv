@@ -1,0 +1,13 @@
+condition,source_frame,rgb_exact,rgb_difference_bounds,rgb_max_delta,mask_xor
+C0,54,False,"(245, 71, 437, 272)",1,0
+C0,55,False,"(90, 39, 436, 346)",1,0
+C0,56,False,"(208, 40, 424, 308)",1,0
+C0,57,False,"(235, 61, 436, 234)",1,0
+C1,54,True,,0,0
+C1,55,True,,0,0
+C1,56,False,"(243, 81, 414, 278)",1,0
+C1,57,False,"(238, 62, 436, 245)",1,0
+C1Live,54,True,,0,0
+C1Live,55,False,"(272, 188, 407, 350)",1,0
+C1Live,56,False,"(254, 161, 415, 341)",1,0
+C1Live,57,False,"(208, 39, 438, 310)",1,0

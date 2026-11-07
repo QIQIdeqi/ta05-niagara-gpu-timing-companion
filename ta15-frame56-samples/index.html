@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TA15 补充｜第 56 帧的两次采样</title>
+<style>
+*{box-sizing:border-box}body{max-width:1080px;margin:auto;padding:20px;color:#e8f0ff;background:#101a28;font:16px/1.65 system-ui}h1,h2,h3{line-height:1.25}h1{font-size:clamp(1.75rem,5vw,2.8rem)}a{color:#8ce1dc}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px}.card{background:#192b40;border:1px solid #39556d;border-radius:14px;padding:14px}.sample{border-left:4px solid #ffc37c;padding-left:10px}.cache{border-color:#8ce1dc}img{display:block;width:100%;height:auto}figure{margin:1em 0 0}small{color:#bed0e4}summary{cursor:pointer}
+</style>
+<main>
+<p>77的技术美术实战 · TA15 技术补充</p>
+<h1>缓存从第 56 帧切入，为什么一帧里会有两种状态？</h1>
+<p>在这次 UE 5.8.4／D3D11 对照中，MRQ 对同一输出帧取两个时间子样本。短缓存区段的两个子样本恰好读到不同状态。下方状态卡来自反序复测日志，每组的两个组件读数一致，绑定对象分别为 A、B。</p>
+<section class="grid" aria-label="三组实测">
+<article class="card"><h2>C0｜完整缓存参照</h2>
+<p class="sample cache"><strong>第一个子样本</strong><br>已绑定缓存 · Active<br>DesiredAge · 实际年龄 0.96458 秒</p>
+<p class="sample cache"><strong>第二个子样本</strong><br>已绑定缓存 · Active<br>DesiredAge · 实际年龄 0.96875 秒</p>
+<figure><img src="C0.png" alt="C0 第56帧最终合成输出" width="640" height="360"><figcaption>实测输出，第 56 帧</figcaption></figure></article>
+<article class="card"><h2>C1｜仅显示缓存</h2>
+<p class="sample"><strong>第一个子样本</strong><br>无缓存绑定 · Complete<br>TickDeltaTime · 实际年龄 0 秒</p>
+<p class="sample cache"><strong>第二个子样本</strong><br>已绑定缓存 · Active<br>DesiredAge · 实际年龄 0.96875 秒</p>
+<figure><img src="C1.png" alt="C1 第56帧最终合成输出" width="640" height="360"><figcaption>实测输出，第 56 帧</figcaption></figure></article>
+<article class="card"><h2>C1Live｜区段外实时模拟</h2>
+<p class="sample"><strong>第一个子样本</strong><br>无缓存绑定 · Active<br>TickDeltaTime · 实际年龄 0.06667 秒</p>
+<p class="sample cache"><strong>第二个子样本</strong><br>已绑定缓存 · Active<br>DesiredAge · 实际年龄 0.96875 秒</p>
+<figure><img src="C1Live.png" alt="C1Live 第56帧最终合成输出" width="640" height="360"><figcaption>实测输出，第 56 帧</figcaption></figure></article>
+</section>
+<p><small>上方 PNG 是完整输出帧，每张包含 MRQ 的时间采样结果。子样本状态来自渲染阶段回调，未单独输出子样本画面或记录精确序列求值时刻。</small></p>
+<h2>动手自查</h2>
+<p>如果只读第二个子样本，能否看出 C1 和 C1Live 在第 56 帧发生过什么差别？</p>
+<details><summary>展开核对</summary><p>第二个子样本中两组都绑定缓存且 Active。区别要回到第一个子样本查，C1 是 Complete，C1Live 是 Active。复查自己的镜头时，记录输出帧号、子样本序号、缓存对象和执行状态，并保留同帧参照。</p></details>
+<h2>实验边界</h2>
+<p>60 fps、240 ticks/s，居中快门、运动模糊 0.5、时间采样 2。三条件正反序的 48 条状态记录匹配。反序探针开关的 12 对 G&gt;30 前景掩膜均一致，RGB 的最大单通道差为 1。数据支持本镜头的渲染阶段状态差异，逐子样本图像贡献和微小 RGB 差异来源仍待验证。</p>
+<p><a href="reverse-samples.csv">下载 48 条反序状态</a> · <a href="reverse-image-pairs.csv">下载 12 对开关核对</a></p>
+<p><a href="../ta15-mrq-setup.html#section-2">返回 TA15 免费搭建手册</a></p><p><small>作者实测，AI 辅助整理。</small></p></main></html>
