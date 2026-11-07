@@ -1,0 +1,61 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TA15 免费搭建手册</title><style>body{margin:auto;max-width:760px;padding:18px;color:#152636;font:16px/1.8 system-ui}table{width:100%;border-collapse:collapse}td,th{border:1px solid #bbc9d3;padding:5px}a{overflow-wrap:anywhere}</style><h1 id="ta-15niagara">TA 实践手记 15｜Niagara 首帧与缓存切入免费搭建手册</h1>
+<p>准备一个你能重新渲染的镜头。本手册采用编辑器界面操作，适合用自己的素材复查。作者实测使用 UE 5.8.4 和 D3D11。以下的帧号是对照设计示例，换用自己的镜头时记录对应的帧段。</p>
+<h2 id="section">1. 搭出能暴露差异的镜头</h2>
+<ol>
+<li>在测试关卡放一个相机和一个 Niagara Actor。先用有明显拖尾或粒子寿命足以跨越多个输出帧的 CPU 系统，背景尽量干净。</li>
+<li>创建 Level Sequence，把相机加到 Camera Cut。把 Niagara Actor 加到序列，添加 Transform 轨道。拖动时间轴，确认运动轨道驱动的就是当前关卡里的发射源。</li>
+<li>将镜头段设为 [38,90)。在第 38、54、58 帧分别把发射源 Y 设为 −140、0、0 cm，其他轴固定。对照时保留曲线插值方式与镜头参数。检查第 54 帧前已经出现粒子，且起点前的运动确实会改变尾迹。</li>
+<li>给每组使用不同输出目录，输出命名使用绝对帧号。记录引擎版本、相机视角、渲染后端、输出区段与采样设置。</li>
+</ol>
+<h2 id="section-1">2. 跑四组实时对照</h2>
+<p>Movie Render Queue 设为 640×360 PNG、60 fps、240 ticks/s、居中快门、Motion Blur 0.5、空间采样 1、时间采样 2、AA None。作者实测 FOV 120°。本对照各组保持 Render Warm Up Frames 关闭。</p>
+<table>
+<thead>
+<tr>
+<th>组别</th>
+<th>输出帧（首末均含）</th>
+<th style="text-align: right;">Engine Warm Up Count</th>
+<th>Use Camera Cut for Warm Up</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>无预热</td>
+<td>54–57</td>
+<td style="text-align: right;">0</td>
+<td>关闭</td>
+</tr>
+<tr>
+<td>引擎预热</td>
+<td>54–57</td>
+<td style="text-align: right;">16</td>
+<td>关闭</td>
+</tr>
+<tr>
+<td>镜头预热</td>
+<td>54–57</td>
+<td style="text-align: right;">由镜头段决定</td>
+<td>开启</td>
+</tr>
+<tr>
+<td>连续参照</td>
+<td>38–57</td>
+<td style="text-align: right;">0</td>
+<td>关闭</td>
+</tr>
+</tbody>
+</table>
+<p>先看相机与时间采样日志，再把三条短输出的第 54 帧与连续参照的第 54 帧并排看。引擎预热让引擎推进，但镜头预热还会求值输出起点前的序列。渲染历史、依赖深度的 GPU 粒子和本次 CPU 实验需分别判断。 <a href="https://dev.epicgames.com/documentation/unreal-engine/cinematic-rendering-image-quality-settings-in-unreal-engine?lang=en-US">Epic MRQ 图像质量设置</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/setting-up-pre-roll">Epic 预滚设置</a></p>
+<h2 id="section-2">3. 跑缓存切入对照</h2>
+<ol>
+<li>在 Sequencer 用 Niagara Sim Cache 缓存轨录制测试系统。确保完整区段在目标帧能读到缓存，先渲染一遍确认该组有预期粒子。</li>
+<li>把这条序列复制两份，绑定同一套缓存素材和轨道。保留 C0 完整区段 [0,59)，两份短区段设为 [56,59)，两份都用 Repeat、首循环偏移 224 ticks。先核对两个短区段使用相同的缓存内容和偏移。</li>
+<li>两条短区段分别选择 Display Cache Only 与 Sim Without Cache。前者在没有缓存数据可显示时停用组件，后者在该条件下运行普通模拟。三组输出第 54–57 帧。 <a href="https://dev.epicgames.com/documentation/unreal-engine/caching-and-reusing-your-system">Epic Niagara 缓存工作流</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/API/Plugins/NiagaraSimCaching/ENiagaraSimCacheSectionPlayMode">Epic 回放模式 API</a></li>
+<li>对每帧都用同帧 C0 作参照。作者实测中，仅显示缓存／区段外实时模拟的相对差异在第 56 帧是 103／593 像素，第 57 帧是 132／11 像素。更换发射器和镜头后，应以新结果为准。</li>
+</ol>
+<h2 id="section-3">4. 留下别人能复查的记录</h2>
+<p>用同尺寸 PNG 和同一前景判定规则。本素材在绿通道大于 30 时判为前景。逐像素比较两张二值图，只统计恰好一张为前景的位置。先检查原图和掩膜，再读总数。</p>
+<p>记录表至少包含组别、输出帧号、同帧参照组、前景数、差异像素数和复测顺序。重开编辑器，换顺序再跑一轮。若两轮不一致，先核对绑定、输出目录、帧号与缓存设置，再分析预热或回放。该计数描述画面，组件年龄、激活状态和 GPU 耗时需要另外采样。</p>
+<p><strong>自查</strong>　只看第 57 帧时你会选哪种模式？补看第 56 帧后，把判断改写成一句包含帧号和参照组的话。</p>
+<p><a href="https://zhuanlan.zhihu.com/p/2102409226295551638">TA15 知乎图解</a> · <a href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-cache-cut-exercise.html">公开逐帧练习</a> · <a href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-frame-readings.csv">44 行实测 CSV</a></p>
+<p>本文使用 AI 辅助整理。作者工程的对照已实跑；从空白关卡按本手册手动搭建尚未单独验收。</p>
