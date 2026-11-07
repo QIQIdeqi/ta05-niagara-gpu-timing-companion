@@ -72,7 +72,7 @@
 <p><a href="ta15-mask-compare.py" download>下载掩膜复算脚本</a>。需要 Python 与 Pillow（<code>python -m pip install Pillow</code>）。把同一帧的参照图和对照图依次传入 <code>python ta15-mask-compare.py reference.png candidate.png --threshold 30</code>，可得到两图前景数和差异像素位置数。</p>
 <p><a href="ta15-mask-example.zip" download>下载第 57 帧复算样例 ZIP</a>。解压后在该目录运行上面的命令。C0 参照前景为 729，C1Live 为 718，掩膜差异为 11 个像素位置。</p>
 <p>同机接收验证：从 v0.3 工程包解压到新目录，分别运行预热与缓存脚本，完成 4 组预热和 3 组缓存对照。44 张输出图的前景像素数与同帧掩膜差异均与原记录一致。此验收使用包内已保存的资产及脚本，从空白关卡重搭及异机复现仍待验证。</p><p><a href="ta15-v03-rerun-readings.csv" download>下载 v0.3 逐帧复跑比对表</a></p>
-<p><a href="ta15-offline-companion-zh-en-v1.4.zip" download>下载中英双语离线伴读 ZIP</a>。解压后打开 index.html，可离线阅读手册、切换逐帧对照并核对 CSV。</p>
+<p><a href="ta15-offline-companion-zh-en-v1.5.zip" download>下载中英双语离线伴读 ZIP</a>。解压后打开 index.html，可离线阅读手册、切换逐帧对照并核对 CSV。</p>
 <p id="offline-csv-check">要复算第 56 帧，在解压后的根目录打开终端，用 Python 3 运行 <code>python ta15-frame56-samples/check_samples.py</code>。应看到 6 行子样本状态，以及 <code>Zero mask XOR: 12/12</code> 和 <code>Exact RGB: 3/12</code>。脚本汇总已有 CSV，无需安装第三方库。直接比较 PNG 请使用下方的掩膜脚本。</p>
-<h2 id="updates">更新记录</h2><ul><li><strong>离线伴读 v1.4</strong>补齐第 54–57 帧的状态切换与输出比较。</li><li><strong>离线伴读 v1.3</strong>：首页补充运行命令，区分 CSV 复算和 PNG 掩膜样例的依赖。</li><li><strong>离线伴读 v1.2</strong>：新增 CSV 核对脚本，汇总第 56 帧的两次回调及 12 对输出比较。脚本只读 CSV，无需安装 Pillow。</li><li><strong>离线伴读 v1.1</strong>：加入双语子样本图解和数据，区分 MRQ 回调记录与最终输出图。</li></ul>
+<p>v1.5 · 离线包内可按原图复算第 56 帧的掩膜差。</p><h2 id="updates">更新记录</h2><ul><li><strong>离线伴读 v1.4</strong>补齐第 54–57 帧的状态切换与输出比较。</li><li><strong>离线伴读 v1.3</strong>：首页补充运行命令，区分 CSV 复算和 PNG 掩膜样例的依赖。</li><li><strong>离线伴读 v1.2</strong>：新增 CSV 核对脚本，汇总第 56 帧的两次回调及 12 对输出比较。脚本只读 CSV，无需安装 Pillow。</li><li><strong>离线伴读 v1.1</strong>：加入双语子样本图解和数据，区分 MRQ 回调记录与最终输出图。</li></ul>
 <p>本文使用 AI 辅助整理。作者工程的对照已实跑；从空白关卡按本手册手动搭建尚未单独验收。</p>
