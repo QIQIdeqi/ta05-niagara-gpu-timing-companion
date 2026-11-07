@@ -6,6 +6,12 @@ An offline, interactive teaching companion for reading **existing Unreal Engine 
 
 **[Open the interactive companion / 直接打开交互伴读](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/)**
 
+## Choose a task / 按任务开始
+
+- **Niagara profiling / 排查 Niagara 性能** — Start with the TA05 chart and [reading exercise](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/#reading-exercise). Compare a render-pass result with whole-frame GPU time and say what each measurement supports.
+- **Editor tools / 做 UE 批量工具** — Start with the [UE02 rename preview exercise](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ue02-rename-preview-en.html) ([中文](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ue02-rename-preview.html)). Change a naming rule after previewing and check whether the stale preview can still run.
+- **Cutscene handoff / 梳理过场审核交接** — Open the [handoff exercise](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/cutscene-handoff-exercise-en.html) ([中文](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/cutscene-handoff-exercise.html)). Write a note another teammate can use to identify the shot, version and time range.
+
 ![Interactive timing chart](docs/timing-companion.png)
 
 ## English measurement guide
