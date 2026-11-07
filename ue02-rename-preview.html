@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UE02 · 重命名预览与重名检查</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101a25;color:#edf5f8;font:16px/1.65 system-ui,sans-serif}
+main{max-width:830px;margin:auto;padding:clamp(16px,5vw,50px)}h1{font-size:clamp(27px,5vw,44px);line-height:1.2;margin:.25em 0}
+h2{font-size:1.3rem;margin:0}a,.series{color:#91e5d1}section{margin:20px 0;padding:clamp(12px,3vw,22px);border:1px solid #385063;border-radius:14px;background:#192a39}
+.controls{display:flex;flex-wrap:wrap;align-items:end;gap:10px;margin:14px 0}label{display:grid;gap:4px}button,select{font:inherit;border-radius:8px;padding:7px 11px}
+button{background:#a0e8d4;color:#112922;border:0;font-weight:700;cursor:pointer}button:disabled{color:#becbd3;background:#3b4d5b;cursor:default}
+button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #ffc877;outline-offset:3px}.table{overflow:auto}table{width:100%;border-collapse:collapse;text-align:left}
+th,td{padding:8px 7px;border-bottom:1px solid #385063;overflow-wrap:anywhere}code{color:#c1eef0}p[role=status]{padding:8px 10px;background:#0f202c;border-radius:8px}summary{cursor:pointer}
+</style>
+</head>
+<body><main>
+<p class="series">77的技术美术实战 · UE 工具蓝图实战 02</p>
+<h1>这份重命名预览还能用吗？</h1>
+<p>用浏览器模拟两种工具状态。练习只显示本页数据，实际蓝图步骤和工程操作见文末教程。</p>
+<section>
+<h2>01 · 改了替换规则</h2>
+<p>先生成预览，再把替换值改为 <code>Other</code>。观察旧目标名、状态提示和「核对当前规则」按钮。</p>
+<div class="controls">
+<label>查找<input value="Old" readonly aria-label="查找内容" size="5"></label>
+<label>替换为<select id="replacement"><option>New</option><option>Other</option></select></label>
+<button id="generate">生成预览</button><button id="check" disabled>核对当前规则</button>
+</div>
+<div class="table"><table><thead><tr><th scope="col">原名</th><th scope="col">预览目标名</th></tr></thead><tbody>
+<tr><td><code>M_Old_Brick</code></td><td><code id="preview-name">—</code></td></tr>
+</tbody></table></div>
+<p id="preview-status" role="status">还没有生成预览。</p>
+</section>
+<section>
+<h2>02 · 目标名称已经存在</h2>
+<p>用完整版示例的四个材质，按 <code>Brick → Metal</code> 生成预览。先猜会拦住几项，再看结果。</p>
+<div class="controls"><button id="conflict-preview">生成重名预览</button><button disabled>确认执行</button></div>
+<div class="table"><table><thead><tr><th scope="col">现有资源</th><th scope="col">候选目标</th><th scope="col">检查结果</th></tr></thead><tbody>
+<tr><td><code>M_Old_Brick</code></td><td id="conflict-target">—</td><td id="conflict-result">待预览</td></tr>
+<tr><td><code>M_Old_Metal</code></td><td>—</td><td>已在同目录</td></tr>
+<tr><td><code>M_Old_Wood</code></td><td>—</td><td>本例无匹配</td></tr>
+<tr><td><code>M_Keep_Stone</code></td><td>—</td><td>本例无匹配</td></tr>
+</tbody></table></div>
+<p id="conflict-status" role="status">还没有检查目标是否被占用。</p>
+</section>
+<details><summary>做完后核对</summary><p>改规则后，旧行可以留着供对照，但按钮失效。重新生成预览，目标名才会显示 <code>M_Other_Brick</code>。重名例中 <code>M_Old_Metal</code> 已存在，阻止 1 项、可执行 0 项，四个原名保持不变。</p></details>
+<p><a href="https://zhuanlan.zhihu.com/p/2095285265053004093">阅读 UE02 完整蓝图教程</a> · <a href="https://zhuanlan.zhihu.com/p/2095979973278437632">查看只读练习与反馈入口</a></p>
+<p>浏览器示意由作者基于 UE02 的演示案例整理，页面实现使用 AI 辅助。</p>
+</main>
+<script>
+const replacement = document.getElementById('replacement');
+const previewName = document.getElementById('preview-name');
+const previewStatus = document.getElementById('preview-status');
+const check = document.getElementById('check');
+let previewExists = false;
+
+document.getElementById('generate').addEventListener('click', () => {
+  previewExists = true;
+  previewName.textContent = 'M_' + replacement.value + '_Brick';
+  previewStatus.textContent = '已生成当前规则的预览。';
+  check.disabled = false;
+});
+
+replacement.addEventListener('change', () => {
+  if (!previewExists) return;
+  previewStatus.textContent = '替换规则已更改，旧预览失效。请重新生成。';
+  check.disabled = true;
+});
+
+check.addEventListener('click', () => {
+  previewStatus.textContent = '当前规则已核对，预览目标是 ' + previewName.textContent + '。';
+});
+
+document.getElementById('conflict-preview').addEventListener('click', () => {
+  document.getElementById('conflict-target').textContent = 'M_Old_Metal';
+  document.getElementById('conflict-result').textContent = '目标已存在';
+  document.getElementById('conflict-status').textContent = '阻止 1 项，可执行 0 项。四个资源名称保持原样。';
+});
+</script>
+</body>
+</html>
