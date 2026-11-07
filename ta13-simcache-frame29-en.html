@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UE5 Niagara Sim Cache Frame 29 | TA Practice Notes 13</title>
+<meta name="description" content="Compare recorded, cached and recomputed Niagara particle coordinates in a real UE5 capture.">
+<link rel="canonical" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta13-simcache-frame29-en.html">
+<link rel="alternate" hreflang="en" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta13-simcache-frame29-en.html">
+<link rel="alternate" hreflang="zh-CN" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta13-simcache-frame29.html">
+<style>
+body {font:1.05rem/1.65 system-ui,sans-serif;background:#111b24;color:#eef5fc;margin:0}
+main {max-width:46rem;padding:2rem 1.1rem;margin:auto} a {color:#9cf1dc}
+figure {margin:1.2rem 0} img {width:100%;height:auto}
+details {padding:1rem;background:#1e2e3b;border-radius:.5rem} summary {cursor:pointer}
+</style>
+</head>
+<body><main>
+<p>77’s Technical Art Practice · TA Practice Notes 13 · <a href="ta13-simcache-frame29.html" lang="zh-CN">简体中文</a></p>
+<h1>Niagara Sim Cache playback: same coordinates, different update paths</h1>
+<p>In UE 5.8.4, the test used one CPU emitter with a fixed seed and timestep. The sequence ran at 60 fps. Recording started at source simulation step 2, so zero-based cache frame 29 corresponds to source simulation step 31.</p>
+<figure><picture><source media="(max-width:550px)" srcset="ta13-frame29-projection-mobile.svg" width="330" height="496"><img src="ta13-frame29-projection.svg" width="660" height="232" alt="Three XZ scatter plots show 32 particle positions each on the same scale."></picture><figcaption>Trial 1, cache frame 29. Panels appear in reading order: original recording, cache playback, independent recomputation. The horizontal axis is X and the vertical axis is Z, in centimeters. Use the CSV to compare all three coordinates, including Y.</figcaption></figure>
+<h2>Compare the three samples</h2>
+<ol>
+<li><a href="ta13-frame29-coordinates.csv" download>Download the 96-row CSV</a>. Split the rows by <code>condition</code>: <code>A</code> (original recording), <code>CachePlayback</code>, and <code>IndependentRecompute</code>.</li>
+<li>Keep only <code>x_cm</code>, <code>y_cm</code>, and <code>z_cm</code>. Sort each group numerically by X, then Y, then Z. Compare the sorted rows and count matches. Keep duplicate coordinates.</li>
+<li>Both component logs report an age of about 0.516667 seconds at this point. The playback component had advanced twice, while the independent recomputation had advanced 31 times. What do the coordinates, age, and advance counts each tell you?</li>
+</ol>
+<details><summary>Check your answer</summary><p>All 32 coordinate triples match across the three groups at CSV precision, including duplicates. The playback probe requested ages at three recorded points and advanced synchronously. Step 31 was its second request. The independent component simulated step by step from its starting point. The advance logs and cache attachment state distinguish the two paths.</p></details>
+<h2>What this test establishes</h2>
+<p>These coordinates represent one recorded time in one trial. The comparison checks positions without tracking particle identity. The capture contains no GPU timing measurements. The CSV extracts the selected time and coordinate columns from three original records. AI assisted with page editing and translation.</p>
+<p><a href="https://zhuanlan.zhihu.com/p/2102302253864449815">Full UE build guide in Chinese</a> · <a href="ta13-offline-reading-v1.0.0.zip" download>Offline reading and data ZIP (Chinese)</a> · <a href="https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/issues/new?template=ta13-reproduction.md">Report your results or a step you could not complete</a></p>
+<p>Next, <a href="ta15-cache-cut-exercise-en.html">compare two playback policies around a cache cut in TA15</a>. That exercise uses its own frame numbers and sampling conditions.</p>
+<p><a href="./">Back to the learning hub</a></p>
+</main></body></html>
