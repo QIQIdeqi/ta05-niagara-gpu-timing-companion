@@ -105,3 +105,7 @@ If a chart, CSV export or explanation does not match what you expected, [open a 
 Created for **77的技术美术实战**. AI assisted with code, wording and layout; numerical claims are grounded in the recorded CSV data and checks. No Unreal Engine binaries, third-party UE assets, private project files or paid Knowledge Planet packages are included. This repository does not change the original teaching project's licence; see [RIGHTS.md](RIGHTS.md).
 
 Technical background: Epic Games, *Measuring Performance in Niagara* and *Viewport Modes*. This is an independent teaching resource, not an Epic Games product or endorsement.
+
+## TA15 · 缓存切入逐帧练习
+
+从计时转到画面差异。比较第 56 和 57 帧的两种回放模式，解释为什么需要对齐输出帧号并连续查看。 [打开逐帧练习](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-cache-cut-exercise.html)
