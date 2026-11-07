@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>过场审核交接练习 · R001 / R002</title>
+<style>
+body{max-width:720px;margin:auto;padding:20px;font:1rem/1.65 system-ui,sans-serif;color:#142534;background:#f3f6f8}
+section{background:white;border:1px solid #cbd7df;padding:18px;margin:16px 0;border-radius:12px}
+h1,h2{line-height:1.3}label{display:block;font-weight:650}
+textarea{box-sizing:border-box;width:100%;font:inherit;min-height:6rem;padding:8px}
+summary,button{cursor:pointer}button{font:inherit;padding:6px 14px}
+</style>
+<main>
+<header><p>过场制作实践 02 · 接收方练习</p><h1>接到审核意见，怎样写出能交接的记录？</h1>
+<p>先写两条记录，再展开参考答案自查。输入只在当前页面使用。</p></header>
+<section>
+<h2>R001 · 接手一条可定位的意见</h2>
+<p>审核参考是 SH010 v001，24 fps，非丢帧，从第 0 帧计数。审核区间为 00:00:02:00 至 00:00:03:00，包含起点，终点不计。要求角色右边缘停在红线前，并保持静止。处理者已交付 SH010 v002，审阅方尚未确认。</p>
+<label for="r1">写下参考版本、交付版本、复查帧区间、当前状态和下一位确认人。再换算 00:00:02:12，说明单帧能检查什么。</label>
+<textarea id="r1"></textarea>
+<details><summary>核对 R001</summary><p>SH010 v001 → v002。复查第 48–71 帧，终点第 72 帧不计。状态为待验收，由审阅方确认。00:00:02:12 是第 60 帧。教学图中该帧的角色右边缘从 x=492 变为 x=440，红线为 x=460。单帧能检查这一帧是否越线，保持静止要看完整区间。</p></details>
+</section>
+<section>
+<h2>R002 · 接手一句模糊的意见</h2>
+<p>收到「SH020 节奏再紧一点」。目录里有 SH020 v001。</p>
+<label for="r2">写下你会补问什么，以及当前状态。</label>
+<textarea id="r2"></textarea>
+<details><summary>核对 R002</summary><p>补问参考版本、帧率、修改区间和具体预期。目录里的 v001 只证明这个文件存在。状态记为待澄清。</p></details>
+</section>
+<section>
+<button type="button" id="build">整理交接记录</button>
+<label for="report">可复制的记录</label>
+<textarea id="report" readonly></textarea>
+</section>
+<p><a href="https://github.com/QIQIdeqi/QIQIdeqi/blob/main/过场交接练习.md">中英文题面</a> · <a href="https://zhuanlan.zhihu.com/p/2096324332645507394">原教程与版本对照图</a></p>
+</main>
+<script>
+const first = document.querySelector('#r1');
+const second = document.querySelector('#r2');
+const report = document.querySelector('#report');
+document.querySelector('#build').addEventListener('click', () => {
+  report.value = ['R001\n' + first.value.trim(), 'R002\n' + second.value.trim()].join('\n\n');
+  report.focus();
+  report.select();
+});
+</script>
+</html>
