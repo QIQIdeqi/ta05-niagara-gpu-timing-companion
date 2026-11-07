@@ -1,0 +1,35 @@
+过场制作实践 02 · 接收方题面 / Cutscene Handoff 02 · Receiver Questions
+
+R001 · 接手一条可定位的意见
+
+审核参考是 SH010 v001，24 fps，非丢帧，从第 0 帧计数。审核区间为 00:00:02:00 至 00:00:03:00，包含起点，终点不计。要求角色右边缘停在红线前，并保持静止。处理者已交付 SH010 v002，审阅方尚未确认。
+
+可用的单帧证据来自 00:00:02:12。两版画面使用同一横坐标，红线 x=460，角色右边缘在 v001 为 x=492，在 v002 为 x=440。用这组读数判断这一帧，再说明还需要什么证据才能确认角色保持静止。
+
+写下参考版本、交付版本、复查帧区间、当前状态和下一位确认人。再换算 00:00:02:12，说明单帧能检查什么。
+
+
+
+R002 · 接手一句模糊的意见
+
+收到「SH020 节奏再紧一点」。目录里有 SH020 v001。
+
+写下你会补问什么，以及当前状态。
+
+---
+
+R001 · A review note you can verify
+
+Reference: SH010 v001, 24 fps, non-drop-frame timecode, zero-based frames. Review from 00:00:02:00 inclusive to 00:00:03:00 exclusive. Keep the character still with its right edge short of the red line. The artist delivered SH010 v002. The reviewer has yet to confirm it.
+
+Use these single-frame measurements at 00:00:02:12. Both versions share the same horizontal coordinates. The red line is at x=460, and the right edge of the character is at x=492 in v001 and x=440 in v002. Decide what this frame shows and what evidence would confirm that the character holds still.
+
+Record the reference version, delivered version, frame range, status and next reviewer. Convert 00:00:02:12 to a frame number and say what that frame can show.
+
+
+
+R002 · A note that needs clarification
+
+The note says “Tighten up the pacing in SH020.” The folder contains SH020 v001.
+
+Write the questions you would ask and the current status.
