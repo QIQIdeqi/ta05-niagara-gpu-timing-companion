@@ -64,13 +64,33 @@ The original 12 CSV hashes were checked against frozen records. Means and sample
 
 ## Next reading exercise / 下一道读数练习
 
-TA05 separates the translucency pass from whole-frame GPU timing. TA10 extends the same reading method to CPU and GPU simulation under a shared workload. In the six-window exercise, E4 has lower frame time in rounds 1 and 3, while E3 has lower frame time in round 2. Look for the exercise after section 07 in the [free Chinese TA10 tutorial](
-https://zhuanlan.zhihu.com/p/2100010070838883685
-).
+**TA10 · UE5.8.4 · E3 CPU and E4 GPU.** The two single-system configurations use 32,768 particles and sprite size 8. The six windows below were recorded in a shared environment. Each cell shows a window mean in milliseconds.
 
-先用 TA05 区分透明阶段与整帧 GPU，再到 [TA10 免费教程](
-https://zhuanlan.zhihu.com/p/2100010070838883685
-)第 07 节后做六窗练习。先核对哪一轮结果换位，再判断 GPU 模拟列缺测时该怎么记录。两篇的采集条件各自独立。
+两组均为单系统、32,768 粒子、Sprite 尺寸 8。以下六窗来自共享环境，单位为毫秒，每格是一个窗口的均值。
+
+| Round / 轮次 | E3 CPU FrameTime | E4 GPU FrameTime | E3 CPU GPU/Translucency |
+| --- | ---: | ---: | ---: |
+| 1 | 4.712 | 3.161 | 0.209 |
+| 2 | 6.547 | 7.615 | 0.373 |
+| 3 | 3.386 | 3.315 | 0.191 |
+
+1. Which configuration has the lower frame time in each round? Compare that with the two medians of the three window means. / 逐轮比较谁的帧时更低，再看两组各自三窗均值的中位数。
+2. E3 has no observed GPU simulation reading in these windows. What can its translucency readings establish? / E3 没有取得 GPU 模拟计时，这三项透明阶段读数能说明什么？
+
+<details>
+<summary>Check your reading / 核对答案</summary>
+
+E4 has the lower mean in rounds 1 and 3. E3 has the lower mean in round 2. The medians of the three window means are 4.712 ms for E3 and 3.315 ms for E4. This describes the measured windows. A causal ranking requires a controlled follow-up.
+
+E4 在第 1、3 轮帧时更低，E3 在第 2 轮更低。三窗均值的中位数是 E3 4.712 ms、E4 3.315 ms。要判断换位是否来自模拟目标，需要另做控制后台负载的对照。
+
+Record E3 GPU simulation as **not observed**. The translucency values show that the scene's GPU pass still reports time with CPU simulation. They do not measure the exclusive GPU cost of one Niagara system.
+
+E3 的 GPU 模拟计时记为「未观测」。CPU 模拟条件下，场景透明阶段仍有 GPU 读数。这个范围覆盖场景 Pass，不能归为一个 Niagara 系统的独占耗时。
+
+</details>
+
+See section 07 and the reading exercise in the [free TA10 Chinese tutorial](https://zhuanlan.zhihu.com/p/2100010070838883685) for the original comparison, capture conditions and follow-up checks.
 
 ## Questions and reproduction / 疑问与复现反馈
 
