@@ -64,6 +64,8 @@ The original 12 CSV hashes were checked against frozen records. Means and sample
 
 ## Next reading exercise / 下一道读数练习
 
+[打开逐轮比较 / Open the interactive six-window exercise](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta10-six-window-exercise.html)
+
 **TA10 · UE5.8.4 · E3 CPU and E4 GPU.** The two single-system configurations use 32,768 particles and sprite size 8. The six windows below were recorded in a shared environment. Each cell shows a window mean in milliseconds.
 
 两组均为单系统、32,768 粒子、Sprite 尺寸 8。以下六窗来自共享环境，单位为毫秒，每格是一个窗口的均值。
