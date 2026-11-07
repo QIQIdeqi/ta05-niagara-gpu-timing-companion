@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TA15 | Niagara MRQ warm-up and Sim Cache setup</title>
+<style>body{margin:auto;max-width:760px;padding:18px;color:#152636;font:16px/1.7 system-ui}table{width:100%;border-collapse:collapse}td,th{border:1px solid #bbc9d3;padding:6px}th{overflow-wrap:anywhere}</style>
+<main>
+<h1>TA15 · Niagara first-frame mismatches in MRQ</h1>
+<p>Use a shot you can re-render. The author's comparison used UE 5.8.4 and D3D11. Treat the frame ranges below as a worked example and record the equivalent ranges for your own shot.</p>
+<h2>1. Build a shot that exposes the difference</h2>
+<ol>
+<li>Place a camera and a Niagara Actor in a test level. Choose a CPU system with a visible trail or particles that survive across several output frames. Use a simple background.</li>
+<li>Create a Level Sequence, bind the camera in Camera Cut, and add a Transform track for the Niagara Actor. Scrub the timeline and verify that the emitter source in the current level actually moves.</li>
+<li>Use a camera cut range of [38,90). Key the emitter source at Y = −140, 0, and 0 cm on frames 38, 54, and 58. Keep the other axes fixed. Preserve interpolation and camera settings between runs. Check that particles are visible before frame 54 and that the preceding motion changes their trail.</li>
+<li>Give every run a separate output folder. Use absolute frame numbers in filenames. Record the engine version, camera, rendering backend, output range, and sampling settings.</li>
+</ol>
+<h2>2. Compare live simulation warm-up</h2>
+<p>Use 640×360 PNG output at 60 fps, 240 ticks/s, a centered shutter, Motion Blur 0.5, one spatial sample, two temporal samples, and AA None. The test used a 120° FOV. Keep Render Warm Up Frames off.</p>
+<table>
+<thead><tr><th>Condition</th><th>Output frames (inclusive)</th><th>Engine Warm Up Count</th><th>Use Camera Cut for Warm Up</th></tr></thead>
+<tbody>
+<tr><td>No warm-up</td><td>54–57</td><td>0</td><td>Off</td></tr>
+<tr><td>Engine warm-up</td><td>54–57</td><td>16</td><td>Off</td></tr>
+<tr><td>Camera-cut warm-up</td><td>54–57</td><td>Determined by the cut range</td><td>On</td></tr>
+<tr><td>Continuous reference</td><td>38–57</td><td>0</td><td>Off</td></tr>
+</tbody></table>
+<p>Check the camera and temporal-sampling logs, then compare frame 54 of each short render with frame 54 of the continuous reference. Engine warm-up advances the engine. Camera-cut warm-up also evaluates the sequence before output starts. Assess render history and depth-dependent GPU particles separately from this CPU example.</p>
+<p><a href="https://dev.epicgames.com/documentation/unreal-engine/cinematic-rendering-image-quality-settings-in-unreal-engine?lang=en-US">Epic MRQ image quality settings</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/setting-up-pre-roll">Epic pre-roll documentation</a></p>
+<h2>3. Compare playback at cache entry</h2>
+<ol>
+<li>Record the test system with a Niagara Sim Cache track in Sequencer. Render the full section once and confirm that the target frames show the expected particles.</li>
+<li>Duplicate the sequence twice and keep the same cache asset and track binding. Use [0,59) for the full section (C0) and [56,59) for both short sections. Give both short sections the Repeat setting and a first-loop offset of 224 ticks.</li>
+<li>Use Display Cache Only for C1 and Sim Without Cache for C1Live. Where there is no cache data to display, the former disables the component and the latter runs ordinary simulation. Render frames 54–57 for all three conditions.</li>
+<li>Compare each frame with the same frame in C0. In this test, C1 and C1Live differed from C0 at 103 and 593 foreground pixel positions on frame 56, and 132 and 11 on frame 57. Re-measure when you change the emitter or shot.</li>
+</ol>
+<p><a href="https://dev.epicgames.com/documentation/unreal-engine/caching-and-reusing-your-system">Epic Niagara cache workflow</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/API/Plugins/NiagaraSimCaching/ENiagaraSimCacheSectionPlayMode">Epic playback mode API</a></p>
+<h2>4. Record enough detail for a repeat run</h2>
+<p>Use PNGs of equal dimensions and apply the same foreground rule to both. For this footage, green channel &gt; 30 marks a foreground pixel. Count the positions marked foreground in exactly one mask. Inspect the original images and masks before interpreting the total.</p>
+<p>Record the condition, absolute output frame, reference condition, foreground count, differing pixel count, and run order. Reopen the editor and repeat in a different order. If runs disagree, check bindings, output folders, frame numbers, and cache settings first. Component age, activation state, and GPU cost each require separate measurements.</p>
+<p><strong>Self-check.</strong> Pick the closer mode using frame 57 alone. Then read frame 56 and revise your conclusion to name the output frame and the reference condition.</p>
+<p><a href="ta15-cache-cut-exercise-en.html#check">English frame comparison</a> · <a href="ta15-frame-readings.csv" download>Measured CSV (44 rows, Chinese headers)</a> · <a href="ta15-mrq-setup.html">Original Chinese guide</a></p>
+<p>English translation was AI-assisted. The author ran the source-project comparisons. A from-scratch manual build following this guide has yet to be independently verified.</p>
+</main>
+</html>
