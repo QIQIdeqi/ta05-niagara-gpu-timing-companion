@@ -59,4 +59,5 @@
 <p>记录表至少包含组别、输出帧号、同帧参照组、前景数、差异像素数和复测顺序。重开编辑器，换顺序再跑一轮。若两轮不一致，先核对绑定、输出目录、帧号与缓存设置，再分析预热或回放。该计数描述画面，组件年龄、激活状态和 GPU 耗时需要另外采样。</p>
 <p><strong>自查</strong>　只看第 57 帧时你会选哪种模式？补看第 56 帧后，把判断改写成一句包含帧号和参照组的话。</p>
 <p><a href="https://zhuanlan.zhihu.com/p/2102409226295551638">TA15 知乎图解</a> · <a href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-cache-cut-exercise.html">公开逐帧练习</a> · <a href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-frame-readings.csv">44 行实测 CSV</a></p>
+<p>同机接收验证：从 v0.3 工程包解压到新目录，分别运行预热与缓存脚本，完成 4 组预热和 3 组缓存对照。44 张输出图的前景像素数与同帧掩膜差异均与原记录一致。此验收使用包内已保存的资产及脚本，从空白关卡重搭及异机复现仍待验证。</p><p><a href="ta15-v03-rerun-readings.csv" download>下载 v0.3 逐帧复跑比对表</a></p>
 <p>本文使用 AI 辅助整理。作者工程的对照已实跑；从空白关卡按本手册手动搭建尚未单独验收。</p>
