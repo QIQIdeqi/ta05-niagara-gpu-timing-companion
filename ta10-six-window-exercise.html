@@ -17,14 +17,15 @@ details{margin:1rem 0}label{display:block;font-weight:600}select{font:inherit;ma
 <h1>同样的粒子数，为什么 CPU 和 GPU 三轮结果会换位？</h1>
 <p>E3 用 CPU 模拟，E4 用 GPU 模拟。两组均为单系统、32,768 个粒子、Sprite 尺寸 8。下表取自 UE 5.8.4 正式实验中已有的六个窗口。记录来自共享环境。</p>
 <p lang="en">Compare three recorded rounds before drawing a conclusion from the median. Each row pairs the round labels for E3 CPU and E4 GPU. Each number is a mean over one measured window in milliseconds.</p>
+<h2>逐轮比较 / Compare each round</h2>
+<label for="round">选择轮次</label><select id="round"><option value="0">第 1 轮 / Round 1</option><option value="1">第 2 轮 / Round 2</option><option value="2">第 3 轮 / Round 3</option></select>
+<p id="reading" aria-live="polite"></p>
+<p>下表保留三轮完整读数。窄屏可横向滑动表格，或直接用上方选择器逐轮查看。</p>
 <div class="table" tabindex="0" role="region" aria-label="三轮窗口读数"><table>
 <caption>同条件对照的窗口均值 · ms</caption>
 <thead><tr><th scope="col">轮次 / Round</th><th scope="col">E3 CPU FrameTime</th><th scope="col">E4 GPU FrameTime</th><th scope="col">E3 透明阶段 / Translucency</th><th scope="col">E3 GPU 模拟 / Simulation</th></tr></thead>
 <tbody><tr><th scope="row">1</th><td>4.712</td><td>3.161</td><td>0.209</td><td>未观测 / Not observed</td></tr><tr><th scope="row">2</th><td>6.547</td><td>7.615</td><td>0.373</td><td>未观测 / Not observed</td></tr><tr><th scope="row">3</th><td>3.386</td><td>3.315</td><td>0.191</td><td>未观测 / Not observed</td></tr></tbody></table></div>
 <p><a href="ta10-six-window-exercise.html" download>下载离线练习 HTML / Download exercise HTML</a> · <a href="ta10-six-window-readings.csv" download>下载三轮读数 CSV / Download readings CSV</a>。先保存到同一个文件夹，再打开 HTML 即可离线切换轮次。CSV 仅导出表内的数值列，E3 GPU 模拟仍记为未观测。</p>
-<h2>逐轮比较 / Compare each round</h2>
-<label for="round">选择轮次</label><select id="round"><option value="0">第 1 轮 / Round 1</option><option value="1">第 2 轮 / Round 2</option><option value="2">第 3 轮 / Round 3</option></select>
-<p id="reading" aria-live="polite"></p>
 <p>先写出三轮里谁的 FrameTime 较低，再对照各组三个窗口均值的中位数。接着解释 E3 为什么既有透明阶段读数，又没有 GPU 模拟读数。</p>
 <details><summary>查看答案 / Check your interpretation</summary>
 <p>E4 在第 1、3 轮较低，E3 在第 2 轮较低。E3 三窗均值的中位数为 4.712 ms，E4 为 3.315 ms。要把差异归因到模拟目标，应尽量隔离后台负载，在一致的渲染和采集条件下复测。</p>
