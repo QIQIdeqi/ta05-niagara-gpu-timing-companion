@@ -56,9 +56,9 @@ These are static rendering comparisons at approximately one second of system age
 
 ### Recompute the readings / 自行复算读数
 
-Clone or download this repository's **source**, then run `python verify_readings.py` from the extracted repository folder. Python 3.8 or later is sufficient. The script checks the two CSV hashes and sample counts, then prints the arithmetic mean, sampled maximum and first frame index reaching that maximum for each metric in each window. All timings are in milliseconds and frame indices start at zero. Expect `PASS: 12 windows, 40353 sampled frames`. For example, in window `01 A_large`, the whole-frame and translucency maxima occur at frames 3139 and 3148, respectively.
+Download the [verified offline ZIP v1.0.4](https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/releases/download/v1.0.4/TA05-Niagara-GPU-Timing-Companion-v1.0.4.zip) or clone this repository, then run `python verify_readings.py` from the extracted repository folder. Python 3.8 or later is sufficient. The script checks the two CSV hashes and sample counts, then prints the arithmetic mean, sampled maximum and first frame index reaching that maximum for each metric in each window. All timings are in milliseconds and frame indices start at zero. Expect `PASS: 12 windows, 40353 sampled frames`. For example, in window `01 A_large`, the whole-frame and translucency maxima occur at frames 3139 and 3148, respectively.
 
-从仓库下载源码后运行 `python verify_readings.py`。对照输出中的两个峰值帧，检查整帧 GPU 和透明阶段的采样最大值是否出现在同一帧。脚本复算的是公开 CSV 中已有的 12 个窗口。
+解压[离线 ZIP v1.0.4](https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/releases/download/v1.0.4/TA05-Niagara-GPU-Timing-Companion-v1.0.4.zip) 或克隆仓库，在含复算脚本的文件夹运行 `python verify_readings.py`。对照输出中的两个峰值帧，检查整帧 GPU 和透明阶段的采样最大值是否出现在同一帧。脚本复算的是公开 CSV 中已有的 12 个窗口。
 
 The original 12 CSV hashes were checked against frozen records. Means and sample maxima were recomputed from all key frames. Browser checks covered eight chart combinations, 24 peak-location cases and a 390px responsive viewport; the original CSV export bytes were checked. This does not establish an independent reader reproduction or a physical-phone test.
 
