@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UE5 Niagara Sim Cache 第 29 帧读数练习｜TA实践手记13</title>
+<meta name="description" content="用第 1 轮三组实测坐标核对 Niagara 缓存回放与独立重算，再比较组件推进次数。">
+<link rel="canonical" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta13-simcache-frame29.html">
+<style>
+body {font: 1.05rem/1.65 system-ui,sans-serif; background:#111b24; color:#eef5fc; margin:0}
+main {max-width:46rem; padding:2rem 1.1rem; margin:auto} a {color:#9cf1dc}
+details {padding:1rem; background:#1e2e3b; border-radius:.5rem} summary {cursor:pointer}
+</style>
+</head>
+<body><main>
+<p>77的技术美术实战 · TA实践手记 13</p>
+<h1>Niagara 缓存回放：同一帧的坐标一样，组件走了几步？</h1>
+<p>UE 5.8.4，单个 CPU 发射器，固定种子与步长。序列设为 60 fps，缓存从源模拟第 2 步开始录。缓存帧从 0 编号，因此缓存第 29 帧对应源模拟第 31 步。</p>
+<h2>用三组实测坐标自查</h2>
+<ol>
+<li><a href="ta13-frame29-coordinates.csv" download>下载第 1 轮 96 行坐标 CSV</a>。按 <code>condition</code> 分三组：录制现场 A、缓存回放 CachePlayback、独立重算 IndependentRecompute。</li>
+<li>每组只取 <code>x_cm</code>、<code>y_cm</code>、<code>z_cm</code>，按 XYZ 排序后逐行比对，保留重复坐标。记录匹配条数。</li>
+<li>两组状态表在该时点都读到约 0.516667 秒。缓存回放组件累计推进 2 次，独立重算组件累计推进 31 次。解释为什么只看坐标和年龄，无法区分这两条执行路径。</li>
+</ol>
+<details><summary>核对读数</summary>
+<p>三组各 32 条，在 CSV 精度下，无序 XYZ 多重集合完全一致。回放探针在三个录制时点按年龄请求并同步推进，第 31 步是第二次请求。独立重算从起点逐步模拟，累计推进 31 次。组件推进记录和挂载状态可用来判断路径。</p>
+</details>
+<h2>结论边界</h2>
+<p>这是一轮中的一个录制时点。排序匹配保留重复项，但没有用粒子身份做逐个追踪。数据也不含 GPU 耗时或任意非录制时点。CSV 只摘取三份原记录的该时点及坐标列，页面与文案使用 AI 辅助整理。</p>
+<p><a href="./">返回学习站</a></p>
+</main></body></html>

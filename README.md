@@ -123,3 +123,7 @@ Compare output frames 56 and 57, then use three original PNGs to recompute the f
 [English frame exercise](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-cache-cut-exercise-en.html#check) · [English setup guide](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-mrq-setup-en.html) · [English PNG exercise](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-frame56-samples/en.html#recompute-mask)
 
 离线使用 / [TA15 bilingual offline bundle v1.5](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-offline-companion-zh-en-v1.5.zip)
+
+## TA13 · Niagara Sim Cache 坐标练习
+
+第 29 帧三组实测坐标与组件推进次数对照，配 96 行 CSV。[打开练习](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta13-simcache-frame29.html)。
