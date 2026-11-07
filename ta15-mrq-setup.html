@@ -1,4 +1,14 @@
-<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TA15 免费搭建手册</title><style>body{margin:auto;max-width:760px;padding:18px;color:#152636;font:16px/1.8 system-ui}table{width:100%;border-collapse:collapse}td,th{border:1px solid #bbc9d3;padding:5px}a{overflow-wrap:anywhere}</style><h1 id="ta-15niagara">TA 实践手记 15｜Niagara 首帧与缓存切入免费搭建手册</h1>
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>UE5 Niagara 首帧排查：MRQ 预热与 Sim Cache 搭建手册｜TA15</title>
+<meta name="description" content="用自己的镜头复查 Niagara 首帧差异。按步骤设置 MRQ 预热和 Sim Cache，比较第 56、57 帧，并离线复算子样本 CSV。">
+<link rel="canonical" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-mrq-setup.html">
+<link rel="alternate" hreflang="zh-CN" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-mrq-setup.html">
+<link rel="alternate" hreflang="en" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-mrq-setup-en.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UE5 Niagara 首帧排查：MRQ 预热与 Sim Cache 搭建手册｜TA15">
+<meta property="og:description" content="用自己的镜头复查 Niagara 首帧差异。按步骤设置 MRQ 预热和 Sim Cache，比较第 56、57 帧，并离线复算子样本 CSV。">
+<meta property="og:url" content="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-mrq-setup.html">
+<meta property="og:locale" content="zh_CN">
+<style>body{margin:auto;max-width:760px;padding:18px;color:#152636;font:16px/1.8 system-ui}table{width:100%;border-collapse:collapse}td,th{border:1px solid #bbc9d3;padding:5px}a{overflow-wrap:anywhere}</style><h1 id="ta-15niagara">TA 实践手记 15｜Niagara 首帧与缓存切入免费搭建手册</h1>
 <p>准备一个你能重新渲染的镜头。本手册采用编辑器界面操作，适合用自己的素材复查。作者实测使用 UE 5.8.4 和 D3D11。以下的帧号是对照设计示例，换用自己的镜头时记录对应的帧段。</p>
 <h2 id="section">1. 搭出能暴露差异的镜头</h2>
 <ol>
