@@ -1,0 +1,4 @@
+round,cpu_e3_frame_time_ms,gpu_e4_frame_time_ms,cpu_e3_translucency_ms
+1,4.712,3.161,0.209
+2,6.547,7.615,0.373
+3,3.386,3.315,0.191

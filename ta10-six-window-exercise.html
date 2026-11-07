@@ -21,6 +21,7 @@ details{margin:1rem 0}label{display:block;font-weight:600}select{font:inherit;ma
 <caption>同条件对照的窗口均值 · ms</caption>
 <thead><tr><th scope="col">轮次 / Round</th><th scope="col">E3 CPU FrameTime</th><th scope="col">E4 GPU FrameTime</th><th scope="col">E3 透明阶段 / Translucency</th><th scope="col">E3 GPU 模拟 / Simulation</th></tr></thead>
 <tbody><tr><th scope="row">1</th><td>4.712</td><td>3.161</td><td>0.209</td><td>未观测 / Not observed</td></tr><tr><th scope="row">2</th><td>6.547</td><td>7.615</td><td>0.373</td><td>未观测 / Not observed</td></tr><tr><th scope="row">3</th><td>3.386</td><td>3.315</td><td>0.191</td><td>未观测 / Not observed</td></tr></tbody></table></div>
+<p><a href="ta10-six-window-exercise.html" download>下载离线练习 HTML / Download exercise HTML</a> · <a href="ta10-six-window-readings.csv" download>下载三轮读数 CSV / Download readings CSV</a>。先保存到同一个文件夹，再打开 HTML 即可离线切换轮次。CSV 仅导出表内的数值列，E3 GPU 模拟仍记为未观测。</p>
 <h2>逐轮比较 / Compare each round</h2>
 <label for="round">选择轮次</label><select id="round"><option value="0">第 1 轮 / Round 1</option><option value="1">第 2 轮 / Round 2</option><option value="2">第 3 轮 / Round 3</option></select>
 <p id="reading" aria-live="polite"></p>
@@ -31,7 +32,7 @@ details{margin:1rem 0}label{display:block;font-weight:600}select{font:inherit;ma
 <p lang="en">E4 is lower in rounds 1 and 3, E3 in round 2. The medians of the three window means are 4.712 and 3.315 ms. Record E3 GPU simulation as unobserved. Its translucency values describe a scene render pass. A controlled follow-up is needed to isolate the simulation target.</p>
 </details>
 <p>沿用原 TA10 已公开的窗口均值，图文使用 AI 辅助整理。完整方法、固定条件与后续检查见原教程。</p>
-<p><a href="https://zhuanlan.zhihu.com/p/2100010070838883685">TA10 免费教程</a> · <a href="measurement-notes.html#ta10-follow-up">返回 TA05 图解</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/2100010070838883685">TA10 免费教程</a> · <a href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/measurement-notes.html#ta10-follow-up">返回 TA05 图解</a></p>
 </main>
 <script>
 const round = document.getElementById('round');
