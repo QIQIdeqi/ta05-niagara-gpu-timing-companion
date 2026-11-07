@@ -13,6 +13,9 @@ title: '[TA05] '
 - [ ] 用原始数据完成读数练习，未运行 UE / Completed the reading exercise without running UE
 - [ ] 自己在 UE 中另做了实验（这是新实验，不是本仓库重新计时）
 
+使用入口或版本 / Page or version: 在线页链接、离线 ZIP 版本（如 v1.0.5），或未知。
+从哪里找到 / How you found it (optional): 例如知乎导读、GitHub 主页或其他公开入口。
+
 ## 2. 我的问题 / Question or unexpected result
 
 期望 / Expected:
