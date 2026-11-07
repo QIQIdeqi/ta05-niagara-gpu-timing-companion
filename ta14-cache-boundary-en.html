@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UE5 Niagara Sim Cache: Check the last frame | TA Practice Notes 14</title>
+<meta name="description" content="Compare two Sequencer tick resolutions using measured Niagara Sim Cache ages and particle positions.">
+<link rel="canonical" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta14-cache-boundary-en.html">
+<link rel="alternate" hreflang="en" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta14-cache-boundary-en.html">
+<link rel="alternate" hreflang="zh-CN" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta14-cache-boundary.html">
+<style>body{background:#102030;color:#eef8ff;font:1rem/1.65 system-ui,sans-serif;margin:0}main{max-width:46rem;margin:auto;padding:2rem 1rem}a{color:#a4eadd}table{width:100%;border-collapse:collapse}th,td{border-bottom:1px solid #527487;padding:.55rem;text-align:left}details{margin-top:1rem;padding:1rem;background:#253d50}summary{cursor:pointer}</style>
+<main><p>77’s Technical Art Practice · TA Practice Notes 14 · <a href="ta14-cache-boundary.html" lang="zh-CN">简体中文</a></p>
+<h1>Why does one Niagara cache track return to the first frame?</h1>
+<p>This UE 5.8.4 test used one CPU emitter. Both Sequencer sections use a 60 fps display rate, Repeat playback and the display-frame range [0,59). The internal tick resolutions are 24,000 and 60 ticks per second. A disables interpolation and B enables it.</p>
+<h2>Read the recorded result</h2>
+<p>At display frame 57.99 both tracks report 32 sampled positions. At frame 58, compare the requested age and the number of positions. Which track still has particles, and where in the cache did it read?</p>
+<table><caption>Measured at display frame 58. A and B returned the same readings within each tick resolution.</caption>
+<thead><tr><th scope="col">Ticks per second</th><th scope="col">Requested age (s)</th><th scope="col">Sampled positions</th></tr></thead>
+<tbody><tr><th scope="row">24,000</th><td>0.0333336331</td><td>32</td></tr><tr><th scope="row">60</th><td>1.0</td><td>0</td></tr></tbody></table>
+<details><summary>Check your answer</summary><p>At 24,000 ticks per second the sampled positions match the first cache frame. At 60 ticks per second the request exceeds this cache’s end age and the component completes. This result applies to the recorded cache, section and Repeat settings. For Movie Render Queue output, check the engine log and the actual output frame numbers separately.</p></details>
+<h2>Recompute from the original samples</h2>
+<p><a href="ta14-cache-boundary-v1.0.1.zip" download>Download the sample bundle v1.0.1</a>. The offline diagram and setup guide are in Chinese. Run <code>python 复算原生轨道.py</code> from the extracted folder. Look for <code>repeat_to_first_cache_frame</code> and <code>cache_age_past_end_completed</code> in the output. The script checks 44 component states and 1,344 position rows.</p>
+<p><a href="https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/issues/new?template=ta14-reproduction.md">Record readings, an Unreal reproduction, or a step you could not complete</a>. GitHub issues are public.</p>
+<p>AI assisted with editing and translation. Readings come from the native Sequencer track capture.</p>
+<p><a href="ta13-simcache-frame29-en.html">Back to TA13 whole-frame comparison</a> · <a href="ta15-cache-cut-exercise-en.html">Continue to TA15 cache-cut exercise</a></p>
+</main></html>

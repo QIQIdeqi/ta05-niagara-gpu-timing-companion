@@ -3,8 +3,10 @@
 <title>UE5 Niagara 缓存末帧自查｜TA实践手记14</title>
 <meta name="description" content="用真实采样对照 Sequencer 两种内部时基在 Niagara 缓存第58帧的表现。">
 <link rel="canonical" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta14-cache-boundary.html">
+<link rel="alternate" hreflang="en" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta14-cache-boundary-en.html">
+<link rel="alternate" hreflang="zh-CN" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta14-cache-boundary.html">
 <style>body{background:#102030;color:#eef8ff;font:1.05rem/1.65 system-ui,sans-serif;margin:0}main{max-width:46rem;margin:auto;padding:2rem 1rem}a{color:#a4eadd}img{width:100%;height:auto}details{background:#253d50;padding:1rem}summary{cursor:pointer}</style>
-<main><p>77的技术美术实战 · TA实践手记14</p>
+<main><p>77的技术美术实战 · TA实践手记14 · <a href="ta14-cache-boundary-en.html" lang="en">English</a></p>
 <h1>Niagara 缓存到第 58 帧，为什么一组回到开头？</h1>
 <p>UE 5.8.4，单 CPU 发射器。两个 Sequencer 区段均为 60 fps、Repeat、显示帧范围 [0,59)。把两组内部时基设成 24,000 与 60 tick/s，对照同一缓存时点的轨道请求和组件状态。</p>
 <img src="ta14-cache-boundary.svg" width="720" height="610" alt="第57.99帧两组各有32个采样位置。第58帧高时基组回读缓存首帧，低时基组进入完成态。">
