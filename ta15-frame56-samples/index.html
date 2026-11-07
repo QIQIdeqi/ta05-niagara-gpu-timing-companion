@@ -28,6 +28,7 @@
 <h2 id="adjacent-frames">沿着第 54–57 帧看状态</h2><p>反序记录中，两个 Niagara Actor 的缓存绑定和运行状态一致。C0 在 8 个回调中均已绑定缓存且为 Active。第 54 帧 0/2 到第 56 帧 0/2，两个短区段一直未绑定缓存，C1 为 Complete，C1Live 为 Active。从第 56 帧 1/2 到第 57 帧 1/2，两组都已绑定缓存且为 Active。</p><p>因此，这次观测只能把状态切换夹在第 56 帧的两次回调之间。第 57 帧的状态读数相同，最终画面的差异仍需用输出图另行比较。</p><h2>动手自查</h2>
 <p>如果只读第二个子样本，能否看出 C1 和 C1Live 在第 56 帧发生过什么差别？</p>
 <details><summary>展开核对</summary><p>第二个子样本中两组都绑定缓存且 Active。区别要回到第一个子样本查，C1 是 Complete，C1Live 是 Active。复查自己的镜头时，记录输出帧号、子样本序号、缓存对象和执行状态，并保留同帧参照。</p></details>
+<h2 id="recompute-mask">用第 56 帧原图复算掩膜</h2><p>把 <a href="C0.png" download>C0.png</a>、<a href="C1.png" download>C1.png</a>、<a href="C1Live.png" download>C1Live.png</a> 和 <a href="../ta15-mask-compare.py" download>复算脚本</a>存到同一目录。用 <code>python -m pip install Pillow</code> 安装依赖，再依次执行：</p><pre><code>python ta15-mask-compare.py C0.png C1.png --threshold 30</code></pre><pre><code>python ta15-mask-compare.py C0.png C1Live.png --threshold 30</code></pre><p>以 G &gt; 30 判为前景，C0、C1、C1Live 的前景分别为 734、823、1233 像素。与同一张 C0 比较，两组分别有 103、593 个位置的前景判定不同。这里比较的是最终合成 PNG，两个时间子样本的状态要另看回调记录。</p>
 <h2>实验边界</h2>
 <p>60 fps、240 ticks/s，居中快门、运动模糊 0.5、时间采样 2。三条件正反序的 48 条状态记录匹配。反序探针开关的 12 对 G&gt;30 前景掩膜均一致，RGB 的最大单通道差为 1。数据支持本镜头的渲染阶段状态差异，逐子样本图像贡献和微小 RGB 差异来源仍待验证。</p>
 <p><a href="reverse-samples.csv">下载 48 条反序状态</a> · <a href="reverse-image-pairs.csv">下载 12 对开关核对</a></p>
