@@ -115,3 +115,11 @@ Technical background: Epic Games, *Measuring Performance in Niagara* and *Viewpo
 ## TA15 · 缓存切入逐帧练习
 
 从计时转到画面差异。比较第 56 和 57 帧的两种回放模式，解释为什么需要对齐输出帧号并连续查看。 [打开逐帧练习](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-cache-cut-exercise.html)
+
+先用逐帧图解比较第 56、57 帧，再用第 56 帧的三个原始 PNG 复算掩膜差。需要重搭时，从免费手册进入。
+[中文搭建手册](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-mrq-setup.html) · [中文原图复算](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-frame56-samples/#recompute-mask)
+
+Compare output frames 56 and 57, then use three original PNGs to recompute the frame 56 mask differences.
+[English frame exercise](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-cache-cut-exercise-en.html#check) · [English setup guide](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-mrq-setup-en.html) · [English PNG exercise](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-frame56-samples/en.html#recompute-mask)
+
+离线使用 / [TA15 bilingual offline bundle v1.5](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-offline-companion-zh-en-v1.5.zip)
