@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cutscene review handoff · R001 / R002</title>
+<style>
+body{max-width:720px;margin:auto;padding:20px;font:1rem/1.65 system-ui,sans-serif;color:#142534;background:#f3f6f8}
+section{background:white;border:1px solid #cbd7df;padding:18px;margin:16px 0;border-radius:12px}
+h1,h2{line-height:1.3}label{display:block;font-weight:650}
+textarea{box-sizing:border-box;width:100%;font:inherit;min-height:6rem;padding:8px}
+summary,button{cursor:pointer}button{font:inherit;padding:6px 14px}
+</style>
+<main>
+<header><p>Cutscene Production Practice 02 · Handoff exercise</p><h1>Can the next person act on your review note?</h1>
+<p>Write both notes, then open the reference answers. Your entries stay on this page. This English adaptation uses AI-assisted translation.</p></header>
+<section>
+<h2>R001 · A review note you can verify</h2>
+<p>Reference: SH010 v001, 24 fps, non-drop-frame timecode, zero-based frames. Review from 00:00:02:00 inclusive to 00:00:03:00 exclusive. Keep the character still with its right edge short of the red line. The artist delivered SH010 v002. The reviewer has yet to confirm it.</p>
+<label for="r1">Record the reference version, delivered version, frame range, status and next reviewer. Convert 00:00:02:12 to a frame number and say what that frame can show.</label>
+<textarea id="r1"></textarea>
+<details><summary>Check R001</summary><p>SH010 v001 → v002. Review frames 48–71. Frame 72 is the exclusive endpoint. Mark the note “awaiting review” and assign the next check to the reviewer. 00:00:02:12 is frame 60. The character’s right edge is at x=492 in v001 and x=440 in v002. The red line is at x=460. Check crossing on frame 60 and check the whole range to verify that the character holds still.</p></details>
+</section>
+<section>
+<h2>R002 · A note that needs clarification</h2>
+<p>The note says “Tighten up the pacing in SH020.” The folder contains SH020 v001.</p>
+<label for="r2">Write the questions you would ask and the current status.</label>
+<textarea id="r2"></textarea>
+<details><summary>Check R002</summary><p>Ask which version the reviewer saw, the frame rate, the relevant range and what change they expect. The presence of v001 establishes that the file exists. Mark the note “needs clarification.”</p></details>
+</section>
+<section>
+<button type="button" id="build">Build handoff notes</button>
+<label for="report">Notes to copy</label>
+<textarea id="report" readonly></textarea>
+</section>
+<p><a href="https://github.com/QIQIdeqi/QIQIdeqi/blob/main/过场交接练习.md">Bilingual exercise text</a> · <a href="https://zhuanlan.zhihu.com/p/2096324332645507394">Original tutorial and version comparison in Chinese</a></p>
+</main>
+<script>
+const first = document.querySelector('#r1');
+const second = document.querySelector('#r2');
+const report = document.querySelector('#report');
+document.querySelector('#build').addEventListener('click', () => {
+  report.value = ['R001\n' + first.value.trim(), 'R002\n' + second.value.trim()].join('\n\n');
+  report.focus();
+  report.select();
+});
+</script>
+</html>
