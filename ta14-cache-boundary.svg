@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="610" viewBox="0 0 720 610" role="img" aria-labelledby="title desc">
+<title id="title">TA14 缓存末帧自查</title><desc id="desc">两组第57.99帧都有32个采样位置。第58帧，24000 tick/s组回到缓存首帧，60 tick/s组进入完成态。MRQ另核对日志和帧号。</desc>
+<rect width="720" height="610" rx="24" fill="#102030"/>
+<g font-family="Microsoft YaHei, Noto Sans CJK SC, sans-serif" fill="#eef8ff">
+<text x="32" y="55" font-size="34" font-weight="bold">TA14 · 第 58 帧为什么不同？</text>
+<text x="32" y="93" font-size="22" fill="#9dd7e6">同为 60 fps、Repeat、显示帧区段 [0,59)</text>
+<rect x="32" y="123" width="656" height="72" rx="12" fill="#253d50"/>
+<text x="52" y="168" font-size="26">第 57.99 帧 · 两组都有 32 个采样位置</text>
+<path d="M360 195v22m0 0H188v20m172-20h172v20" stroke="#9dd7e6" stroke-width="3" fill="none"/>
+<rect x="32" y="237" width="312" height="137" rx="12" fill="#164c4c"/>
+<rect x="376" y="237" width="312" height="137" rx="12" fill="#523747"/>
+<text x="52" y="277" font-size="24">24,000 tick/s · 第 58 帧</text>
+<text x="52" y="325" font-size="29" font-weight="bold">回读缓存首帧</text>
+<text x="396" y="277" font-size="24">60 tick/s · 第 58 帧</text>
+<text x="396" y="325" font-size="29" font-weight="bold">组件进入完成态</text>
+<text x="32" y="423" font-size="25" font-weight="bold">Sequencer 自查顺序</text>
+<text x="32" y="460" font-size="22">显示帧 → 轨道 Desired Age → 组件状态与坐标</text>
+<path d="M32 489h656" stroke="#4c6678"/>
+<text x="32" y="532" font-size="25" font-weight="bold">MRQ 出片单独验收</text>
+<text x="32" y="568" font-size="22">先查引擎日志与输出帧号，再比较像素。</text>
+</g></svg>

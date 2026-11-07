@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>UE5 Niagara 缓存末帧自查｜TA实践手记14</title>
+<meta name="description" content="用真实采样对照 Sequencer 两种内部时基在 Niagara 缓存第58帧的表现。">
+<link rel="canonical" href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta14-cache-boundary.html">
+<style>body{background:#102030;color:#eef8ff;font:1.05rem/1.65 system-ui,sans-serif;margin:0}main{max-width:46rem;margin:auto;padding:2rem 1rem}a{color:#a4eadd}img{width:100%;height:auto}details{background:#253d50;padding:1rem}summary{cursor:pointer}</style>
+<main><p>77的技术美术实战 · TA实践手记14</p>
+<h1>Niagara 缓存到第 58 帧，为什么一组回到开头？</h1>
+<p>UE 5.8.4，单 CPU 发射器。两个 Sequencer 区段均为 60 fps、Repeat、显示帧范围 [0,59)。把两组内部时基设成 24,000 与 60 tick/s，对照同一缓存时点的轨道请求和组件状态。</p>
+<img src="ta14-cache-boundary.svg" width="720" height="610" alt="第57.99帧两组各有32个采样位置。第58帧高时基组回读缓存首帧，低时基组进入完成态。">
+<h2>先做一次读数自查</h2>
+<ol><li><a href="ta14-cache-boundary-v1.0.1.zip" download>下载图解与原始采样 v1.0.1</a>。解压打开「图解与免费手册/index.html」。</li>
+<li>先选 57.99，再切到 58。记下两组 Desired Age、组件状态和采样位置数量。把插值从 B 切到 A 后再比一次。</li>
+<li>如需复算，在解压根目录运行 <code>python 复算原生轨道.py</code>。用输出核对第 58 帧两种结果。</li></ol>
+<details><summary>核对答案</summary><p>57.99 帧两组各有 32 个位置。第 58 帧两种插值设置下，24,000 tick/s 都回读缓存首帧，60 tick/s 都进入完成态。本次对照限于这段缓存、区段与 Repeat 配置。MRQ 出片需单独检查日志和实际输出帧号。</p></details>
+<p>本页使用 AI 辅助编辑，数据来自原生轨道采样。</p>
+<p><a href="ta13-simcache-frame29.html">回到 TA13 整帧练习</a> · <a href="ta15-cache-cut-exercise.html">继续 TA15 缓存切入自查</a> · <a href="./">返回学习站</a></p>
+</main></html>
