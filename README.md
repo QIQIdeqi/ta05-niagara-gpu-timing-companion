@@ -126,4 +126,6 @@ Compare output frames 56 and 57, then use three original PNGs to recompute the f
 
 ## TA13 · Niagara Sim Cache 坐标练习
 
+[English coordinate exercise](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta13-simcache-frame29-en.html) with the same measured CSV and answer.
+
 第 29 帧三组实测坐标与组件推进次数对照，配 96 行 CSV。[打开练习](https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta13-simcache-frame29.html)。
