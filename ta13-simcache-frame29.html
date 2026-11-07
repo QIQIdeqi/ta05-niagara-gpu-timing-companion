@@ -16,7 +16,7 @@ details {padding:1rem; background:#1e2e3b; border-radius:.5rem} summary {cursor:
 <p>77的技术美术实战 · TA实践手记 13</p>
 <h1>Niagara 缓存回放：同一帧的坐标一样，组件走了几步？</h1>
 <p>UE 5.8.4，单个 CPU 发射器，固定种子与步长。序列设为 60 fps，缓存从源模拟第 2 步开始录。缓存帧从 0 编号，因此缓存第 29 帧对应源模拟第 31 步。</p>
-<figure style="margin:1.2rem 0"><img src="ta13-frame29-projection.svg" width="660" height="232" style="width:100%;height:auto" alt="录制现场、缓存回放和独立重算各 32 个粒子的 XZ 投影，三图使用同一坐标范围"><figcaption>第 1 轮、第 29 帧，三组使用相同的 XZ 坐标范围。投影看不到 Y，三维位置仍需用下方 CSV 核对。</figcaption></figure>
+<figure style="margin:1.2rem 0"><picture><source media="(max-width: 550px)" srcset="ta13-frame29-projection-mobile.svg" width="330" height="496"><img src="ta13-frame29-projection.svg" width="660" height="232" style="width:100%;height:auto" alt="录制现场、缓存回放和独立重算各 32 个粒子的 XZ 投影，三图使用同一坐标范围"></picture><figcaption>第 1 轮、第 29 帧，三组使用相同的 XZ 坐标范围。投影看不到 Y，三维位置仍需用下方 CSV 核对。</figcaption></figure>
 <h2>用三组实测坐标自查</h2>
 <ol>
 <li><a href="ta13-frame29-coordinates.csv" download>下载第 1 轮 96 行坐标 CSV</a>。按 <code>condition</code> 分三组：录制现场 A、缓存回放 CachePlayback、独立重算 IndependentRecompute。</li>

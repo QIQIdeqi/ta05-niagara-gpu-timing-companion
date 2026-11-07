@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="330" height="496" viewBox="0 0 330 496">
+<rect width="330" height="496" rx="12" fill="#192a37"/>
+<g transform="translate(0 -26)">
+<text x="218" y="69" fill="#9cf1dc" font-size="16">录制现场 · 32 点</text>
+<rect x="26" y="44" width="174" height="128" fill="#111b24" stroke="#627f91"/>
+<path d="M 26.000 44 v 128" stroke="#304655"/>
+<path d="M 47.750 44 v 128" stroke="#304655"/>
+<path d="M 69.500 44 v 128" stroke="#304655"/>
+<path d="M 91.250 44 v 128" stroke="#304655"/>
+<path d="M 113.000 44 v 128" stroke="#304655"/>
+<path d="M 134.750 44 v 128" stroke="#304655"/>
+<path d="M 156.500 44 v 128" stroke="#304655"/>
+<path d="M 178.250 44 v 128" stroke="#304655"/>
+<path d="M 200.000 44 v 128" stroke="#304655"/>
+<path d="M 26 172.000 h 174" stroke="#304655"/>
+<path d="M 26 156.000 h 174" stroke="#304655"/>
+<path d="M 26 140.000 h 174" stroke="#304655"/>
+<path d="M 26 124.000 h 174" stroke="#304655"/>
+<path d="M 26 108.000 h 174" stroke="#304655"/>
+<path d="M 26 92.000 h 174" stroke="#304655"/>
+<path d="M 26 76.000 h 174" stroke="#304655"/>
+<path d="M 26 60.000 h 174" stroke="#304655"/>
+<path d="M 26 44.000 h 174" stroke="#304655"/>
+<circle cx="149.990" cy="117.444" r="2.7" fill="#9cf1dc"/>
+<circle cx="141.599" cy="59.555" r="2.7" fill="#9cf1dc"/>
+<circle cx="149.443" cy="111.296" r="2.7" fill="#9cf1dc"/>
+<circle cx="63.320" cy="63.606" r="2.7" fill="#9cf1dc"/>
+<circle cx="117.593" cy="60.209" r="2.7" fill="#9cf1dc"/>
+<circle cx="84.296" cy="134.459" r="2.7" fill="#9cf1dc"/>
+<circle cx="110.182" cy="104.865" r="2.7" fill="#9cf1dc"/>
+<circle cx="178.695" cy="134.263" r="2.7" fill="#9cf1dc"/>
+<circle cx="41.707" cy="95.131" r="2.7" fill="#9cf1dc"/>
+<circle cx="98.277" cy="155.211" r="2.7" fill="#9cf1dc"/>
+<circle cx="159.214" cy="137.407" r="2.7" fill="#9cf1dc"/>
+<circle cx="75.732" cy="70.405" r="2.7" fill="#9cf1dc"/>
+<circle cx="128.766" cy="104.531" r="2.7" fill="#9cf1dc"/>
+<circle cx="99.283" cy="105.502" r="2.7" fill="#9cf1dc"/>
+<circle cx="117.498" cy="103.250" r="2.7" fill="#9cf1dc"/>
+<circle cx="116.696" cy="126.157" r="2.7" fill="#9cf1dc"/>
+<circle cx="54.507" cy="99.469" r="2.7" fill="#9cf1dc"/>
+<circle cx="88.487" cy="109.225" r="2.7" fill="#9cf1dc"/>
+<circle cx="67.648" cy="84.392" r="2.7" fill="#9cf1dc"/>
+<circle cx="67.083" cy="97.305" r="2.7" fill="#9cf1dc"/>
+<circle cx="116.816" cy="104.045" r="2.7" fill="#9cf1dc"/>
+<circle cx="84.142" cy="133.784" r="2.7" fill="#9cf1dc"/>
+<circle cx="116.606" cy="92.279" r="2.7" fill="#9cf1dc"/>
+<circle cx="122.790" cy="72.700" r="2.7" fill="#9cf1dc"/>
+<circle cx="121.588" cy="98.863" r="2.7" fill="#9cf1dc"/>
+<circle cx="115.958" cy="70.476" r="2.7" fill="#9cf1dc"/>
+<circle cx="88.662" cy="121.272" r="2.7" fill="#9cf1dc"/>
+<circle cx="148.128" cy="110.200" r="2.7" fill="#9cf1dc"/>
+<circle cx="68.891" cy="56.276" r="2.7" fill="#9cf1dc"/>
+<circle cx="136.992" cy="70.435" r="2.7" fill="#9cf1dc"/>
+<circle cx="129.159" cy="156.963" r="2.7" fill="#9cf1dc"/>
+<circle cx="118.825" cy="146.955" r="2.7" fill="#9cf1dc"/>
+<text x="218" y="99" font-size="12" fill="#d6e8f4">X -200 至 200 cm</text>
+<text x="218" y="122" font-size="12" fill="#d6e8f4">Z 0 至 400 cm</text>
+</g>
+<g transform="translate(-220 138)">
+<text x="438" y="69" fill="#83c5ff" font-size="16">缓存回放 · 32 点</text>
+<rect x="246" y="44" width="174" height="128" fill="#111b24" stroke="#627f91"/>
+<path d="M 246.000 44 v 128" stroke="#304655"/>
+<path d="M 267.750 44 v 128" stroke="#304655"/>
+<path d="M 289.500 44 v 128" stroke="#304655"/>
+<path d="M 311.250 44 v 128" stroke="#304655"/>
+<path d="M 333.000 44 v 128" stroke="#304655"/>
+<path d="M 354.750 44 v 128" stroke="#304655"/>
+<path d="M 376.500 44 v 128" stroke="#304655"/>
+<path d="M 398.250 44 v 128" stroke="#304655"/>
+<path d="M 420.000 44 v 128" stroke="#304655"/>
+<path d="M 246 172.000 h 174" stroke="#304655"/>
+<path d="M 246 156.000 h 174" stroke="#304655"/>
+<path d="M 246 140.000 h 174" stroke="#304655"/>
+<path d="M 246 124.000 h 174" stroke="#304655"/>
+<path d="M 246 108.000 h 174" stroke="#304655"/>
+<path d="M 246 92.000 h 174" stroke="#304655"/>
+<path d="M 246 76.000 h 174" stroke="#304655"/>
+<path d="M 246 60.000 h 174" stroke="#304655"/>
+<path d="M 246 44.000 h 174" stroke="#304655"/>
+<circle cx="369.990" cy="117.444" r="2.7" fill="#83c5ff"/>
+<circle cx="361.599" cy="59.555" r="2.7" fill="#83c5ff"/>
+<circle cx="369.443" cy="111.296" r="2.7" fill="#83c5ff"/>
+<circle cx="283.320" cy="63.606" r="2.7" fill="#83c5ff"/>
+<circle cx="337.593" cy="60.209" r="2.7" fill="#83c5ff"/>
+<circle cx="304.296" cy="134.459" r="2.7" fill="#83c5ff"/>
+<circle cx="330.182" cy="104.865" r="2.7" fill="#83c5ff"/>
+<circle cx="398.695" cy="134.263" r="2.7" fill="#83c5ff"/>
+<circle cx="261.707" cy="95.131" r="2.7" fill="#83c5ff"/>
+<circle cx="318.277" cy="155.211" r="2.7" fill="#83c5ff"/>
+<circle cx="379.214" cy="137.407" r="2.7" fill="#83c5ff"/>
+<circle cx="295.732" cy="70.405" r="2.7" fill="#83c5ff"/>
+<circle cx="348.766" cy="104.531" r="2.7" fill="#83c5ff"/>
+<circle cx="319.283" cy="105.502" r="2.7" fill="#83c5ff"/>
+<circle cx="337.498" cy="103.250" r="2.7" fill="#83c5ff"/>
+<circle cx="336.696" cy="126.157" r="2.7" fill="#83c5ff"/>
+<circle cx="274.507" cy="99.469" r="2.7" fill="#83c5ff"/>
+<circle cx="308.487" cy="109.225" r="2.7" fill="#83c5ff"/>
+<circle cx="287.648" cy="84.392" r="2.7" fill="#83c5ff"/>
+<circle cx="287.083" cy="97.305" r="2.7" fill="#83c5ff"/>
+<circle cx="336.816" cy="104.045" r="2.7" fill="#83c5ff"/>
+<circle cx="304.142" cy="133.784" r="2.7" fill="#83c5ff"/>
+<circle cx="336.606" cy="92.279" r="2.7" fill="#83c5ff"/>
+<circle cx="342.790" cy="72.700" r="2.7" fill="#83c5ff"/>
+<circle cx="341.588" cy="98.863" r="2.7" fill="#83c5ff"/>
+<circle cx="335.958" cy="70.476" r="2.7" fill="#83c5ff"/>
+<circle cx="308.662" cy="121.272" r="2.7" fill="#83c5ff"/>
+<circle cx="368.128" cy="110.200" r="2.7" fill="#83c5ff"/>
+<circle cx="288.891" cy="56.276" r="2.7" fill="#83c5ff"/>
+<circle cx="356.992" cy="70.435" r="2.7" fill="#83c5ff"/>
+<circle cx="349.159" cy="156.963" r="2.7" fill="#83c5ff"/>
+<circle cx="338.825" cy="146.955" r="2.7" fill="#83c5ff"/>
+<text x="438" y="99" font-size="12" fill="#d6e8f4">X -200 至 200 cm</text>
+<text x="438" y="122" font-size="12" fill="#d6e8f4">Z 0 至 400 cm</text>
+</g>
+<g transform="translate(-440 302)">
+<text x="658" y="69" fill="#ffd58c" font-size="16">独立重算 · 32 点</text>
+<rect x="466" y="44" width="174" height="128" fill="#111b24" stroke="#627f91"/>
+<path d="M 466.000 44 v 128" stroke="#304655"/>
+<path d="M 487.750 44 v 128" stroke="#304655"/>
+<path d="M 509.500 44 v 128" stroke="#304655"/>
+<path d="M 531.250 44 v 128" stroke="#304655"/>
+<path d="M 553.000 44 v 128" stroke="#304655"/>
+<path d="M 574.750 44 v 128" stroke="#304655"/>
+<path d="M 596.500 44 v 128" stroke="#304655"/>
+<path d="M 618.250 44 v 128" stroke="#304655"/>
+<path d="M 640.000 44 v 128" stroke="#304655"/>
+<path d="M 466 172.000 h 174" stroke="#304655"/>
+<path d="M 466 156.000 h 174" stroke="#304655"/>
+<path d="M 466 140.000 h 174" stroke="#304655"/>
+<path d="M 466 124.000 h 174" stroke="#304655"/>
+<path d="M 466 108.000 h 174" stroke="#304655"/>
+<path d="M 466 92.000 h 174" stroke="#304655"/>
+<path d="M 466 76.000 h 174" stroke="#304655"/>
+<path d="M 466 60.000 h 174" stroke="#304655"/>
+<path d="M 466 44.000 h 174" stroke="#304655"/>
+<circle cx="589.990" cy="117.444" r="2.7" fill="#ffd58c"/>
+<circle cx="581.599" cy="59.555" r="2.7" fill="#ffd58c"/>
+<circle cx="589.443" cy="111.296" r="2.7" fill="#ffd58c"/>
+<circle cx="503.320" cy="63.606" r="2.7" fill="#ffd58c"/>
+<circle cx="557.593" cy="60.209" r="2.7" fill="#ffd58c"/>
+<circle cx="524.296" cy="134.459" r="2.7" fill="#ffd58c"/>
+<circle cx="550.182" cy="104.865" r="2.7" fill="#ffd58c"/>
+<circle cx="618.695" cy="134.263" r="2.7" fill="#ffd58c"/>
+<circle cx="481.707" cy="95.131" r="2.7" fill="#ffd58c"/>
+<circle cx="538.277" cy="155.211" r="2.7" fill="#ffd58c"/>
+<circle cx="599.214" cy="137.407" r="2.7" fill="#ffd58c"/>
+<circle cx="515.732" cy="70.405" r="2.7" fill="#ffd58c"/>
+<circle cx="568.766" cy="104.531" r="2.7" fill="#ffd58c"/>
+<circle cx="539.283" cy="105.502" r="2.7" fill="#ffd58c"/>
+<circle cx="557.498" cy="103.250" r="2.7" fill="#ffd58c"/>
+<circle cx="556.696" cy="126.157" r="2.7" fill="#ffd58c"/>
+<circle cx="494.507" cy="99.469" r="2.7" fill="#ffd58c"/>
+<circle cx="528.487" cy="109.225" r="2.7" fill="#ffd58c"/>
+<circle cx="507.648" cy="84.392" r="2.7" fill="#ffd58c"/>
+<circle cx="507.083" cy="97.305" r="2.7" fill="#ffd58c"/>
+<circle cx="556.816" cy="104.045" r="2.7" fill="#ffd58c"/>
+<circle cx="524.142" cy="133.784" r="2.7" fill="#ffd58c"/>
+<circle cx="556.606" cy="92.279" r="2.7" fill="#ffd58c"/>
+<circle cx="562.790" cy="72.700" r="2.7" fill="#ffd58c"/>
+<circle cx="561.588" cy="98.863" r="2.7" fill="#ffd58c"/>
+<circle cx="555.958" cy="70.476" r="2.7" fill="#ffd58c"/>
+<circle cx="528.662" cy="121.272" r="2.7" fill="#ffd58c"/>
+<circle cx="588.128" cy="110.200" r="2.7" fill="#ffd58c"/>
+<circle cx="508.891" cy="56.276" r="2.7" fill="#ffd58c"/>
+<circle cx="576.992" cy="70.435" r="2.7" fill="#ffd58c"/>
+<circle cx="569.159" cy="156.963" r="2.7" fill="#ffd58c"/>
+<circle cx="558.825" cy="146.955" r="2.7" fill="#ffd58c"/>
+<text x="658" y="99" font-size="12" fill="#d6e8f4">X -200 至 200 cm</text>
+<text x="658" y="122" font-size="12" fill="#d6e8f4">Z 0 至 400 cm</text>
+</g>
+</svg>
