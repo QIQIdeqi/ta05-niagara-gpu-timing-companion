@@ -62,6 +62,16 @@ Download the [verified offline ZIP v1.0.4](https://github.com/QIQIdeqi/ta05-niag
 
 The original 12 CSV hashes were checked against frozen records. Means and sample maxima were recomputed from all key frames. Browser checks covered eight chart combinations, 24 peak-location cases and a 390px responsive viewport; the original CSV export bytes were checked. This does not establish an independent reader reproduction or a physical-phone test.
 
+## Next reading exercise / 下一道读数练习
+
+TA05 separates the translucency pass from whole-frame GPU timing. TA10 extends the same reading method to CPU and GPU simulation under a shared workload. In the six-window exercise, E4 has lower frame time in rounds 1 and 3, while E3 has lower frame time in round 2. Look for the exercise after section 07 in the [free Chinese TA10 tutorial](
+https://zhuanlan.zhihu.com/p/2100010070838883685
+).
+
+先用 TA05 区分透明阶段与整帧 GPU，再到 [TA10 免费教程](
+https://zhuanlan.zhihu.com/p/2100010070838883685
+)第 07 节后做六窗练习。先核对哪一轮结果换位，再判断 GPU 模拟列缺测时该怎么记录。两篇的采集条件各自独立。
+
 ## Questions and reproduction / 疑问与复现反馈
 
 If a chart, CSV export or explanation does not match what you expected, [open a focused issue](https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/issues/new?template=reproduction.md). State the step you reached, expected versus observed behaviour, selected metric/window/frame, and the relevant environment. Reading without running UE is welcome; mark it as reading rather than a reproduction.
