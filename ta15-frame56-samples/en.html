@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TA15 · Two temporal samples at frame 56</title>
+<style>
+*{box-sizing:border-box}body{max-width:1080px;margin:auto;padding:20px;color:#e8f0ff;background:#101a28;font:16px/1.65 system-ui}h1,h2,h3{line-height:1.25}h1{font-size:clamp(1.75rem,5vw,2.8rem)}a{color:#8ce1dc}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:12px}.card{background:#192b40;border:1px solid #39556d;border-radius:14px;padding:14px}.sample{border-left:4px solid #ffc37c;padding-left:10px}.cache{border-color:#8ce1dc}img{display:block;width:100%;height:auto}figure{margin:1em 0 0}small{color:#bed0e4}summary{cursor:pointer}
+</style>
+<main>
+<p>77 Technical Art Practice · TA15 supplement · <a href="./" lang="zh-CN">中文版</a></p>
+<h1>Two Niagara states inside one MRQ output frame</h1>
+<p>In this UE 5.8.4 / D3D11 test, Movie Render Queue takes two temporal samples for each output frame. The first and second samples at frame 56 report different states for both short cache sections. Both components match within each condition, with cache assets A and B bound to separate components.</p>
+<section class="grid" aria-label="Three measured conditions">
+<article class="card"><h2>C0 · Full cache reference</h2>
+<p class="sample cache"><strong>First sample</strong><br>Cache bound · Active<br>DesiredAge · actual age 0.96458 s</p>
+<p class="sample cache"><strong>Second sample</strong><br>Cache bound · Active<br>DesiredAge · actual age 0.96875 s</p>
+<figure><img src="C0.png" alt="C0 final output at frame 56" width="640" height="360"><figcaption>MRQ output, frame 56</figcaption></figure></article>
+<article class="card"><h2>C1 · Display Cache Only</h2>
+<p class="sample"><strong>First sample</strong><br>No cache bound · Complete<br>TickDeltaTime · actual age 0 s</p>
+<p class="sample cache"><strong>Second sample</strong><br>Cache bound · Active<br>DesiredAge · actual age 0.96875 s</p>
+<figure><img src="C1.png" alt="C1 final output at frame 56" width="640" height="360"><figcaption>MRQ output, frame 56</figcaption></figure></article>
+<article class="card"><h2>C1Live · Sim Without Cache</h2>
+<p class="sample"><strong>First sample</strong><br>No cache bound · Active<br>TickDeltaTime · actual age 0.06667 s</p>
+<p class="sample cache"><strong>Second sample</strong><br>Cache bound · Active<br>DesiredAge · actual age 0.96875 s</p>
+<figure><img src="C1Live.png" alt="C1Live final output at frame 56" width="640" height="360"><figcaption>MRQ output, frame 56</figcaption></figure></article>
+</section>
+<p><small>The PNGs are final output frames. The status cards come from the per-sample render callback. Individual sample images and exact Sequencer evaluation times were not recorded.</small></p>
+<h2>Try it yourself</h2>
+<p>Can you tell C1 and C1Live apart by inspecting the second sample alone?</p>
+<details><summary>Check your answer</summary><p>Both have a cache bound and report Active in the second sample. At the first sample, C1 reports Complete while C1Live reports Active. For your own shot, log the frame, temporal sample index, cache binding, and execution state alongside a same-frame reference.</p></details>
+<h2>Test conditions and limits</h2>
+<p>60 fps, 240 ticks/s, centered shutter, motion blur 0.5, and two temporal samples. All 48 state records matched across the two job orders. With the probe on and off in the reversed run, all 12 G&gt;30 foreground mask pairs matched. The largest RGB difference in any channel was one 8-bit level. The contribution of each sample to the final image and the source of those small RGB differences remain open.</p>
+<p><a href="reverse-samples.csv">Download the 48 reversed-run records</a> · <a href="reverse-image-pairs.csv">Download the 12 image comparisons</a></p>
+<p><a href="../ta15-mrq-setup-en.html#cache-entry">Return to the free setup guide</a></p>
+<p><small>Original measurements by 77 Technical Art Practice. AI assisted the English adaptation.</small></p>
+</main></html>

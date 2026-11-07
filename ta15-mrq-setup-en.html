@@ -27,7 +27,7 @@
 <p>The camera-cut group sets Engine Warm Up Count to 0 and enables Use Camera Cut for Warm Up. MRQ derives warm-up from the Camera Cut section before output begins. The 0 in the table is the configured value. In the v0.3 same-machine rerun, the MRQ initialization log reported 16 warm-up frames for both L1 and L2. L1 used a configured count of 16; L2 used a configured count of 0 and derived its warm-up from the camera cut. The equal counts do not imply identical sequence evaluation.</p>
 <p>Check the camera and temporal-sampling logs, then compare frame 54 of each short render with frame 54 of the continuous reference. Engine warm-up advances the engine. Camera-cut warm-up also evaluates the sequence before output starts. Assess render history and depth-dependent GPU particles separately from this CPU example.</p>
 <p><a href="https://dev.epicgames.com/documentation/unreal-engine/cinematic-rendering-image-quality-settings-in-unreal-engine?lang=en-US">Epic MRQ image quality settings</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/setting-up-pre-roll">Epic pre-roll documentation</a></p>
-<h2>3. Compare playback at cache entry</h2>
+<h2 id="cache-entry">3. Compare playback at cache entry</h2><p><a href="ta15-frame56-samples/en.html">See both temporal samples at frame 56</a> in the reversed-run measurements.</p>
 <ol>
 <li>Record the test system with a Niagara Sim Cache track in Sequencer. Render the full section once and confirm that the target frames show the expected particles.</li>
 <li>Duplicate the sequence twice and keep the same cache asset and track binding. Use [0,59) for the full section (C0) and [56,59) for both short sections. Give both short sections the Repeat setting and a first-loop offset of 224 ticks.</li>
