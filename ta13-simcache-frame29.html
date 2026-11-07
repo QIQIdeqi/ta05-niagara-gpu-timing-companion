@@ -28,6 +28,7 @@ details {padding:1rem; background:#1e2e3b; border-radius:.5rem} summary {cursor:
 </details>
 <p>需要在 UE 里自己搭一条缓存轨道？<a href="https://zhuanlan.zhihu.com/p/2102302253864449815">阅读 TA13 完整图文教程</a>，按步骤录制、保存并重开，再验证区段内外和回到起点的表现。</p>
 <p><a href="ta13-offline-reading-v1.0.0.zip" download>下载离线读图与数据复算包 v1.0.0</a>。解压后打开「开始阅读.html」查看三维对照。包内有三轮实测 CSV 和 Python 复算脚本，读图可直接用浏览器，复算需 Python 3.8 或更新版本。</p>
+<p>做到哪一步都可以记录。用 <a href="https://github.com/QIQIdeqi/ta05-niagara-gpu-timing-companion/issues/new?template=ta13-reproduction.md">TA13 公开反馈模板</a>填入三种帧号、匹配坐标数、组件推进次数，或你卡住的步骤。</p>
 <h2>结论边界</h2>
 <p>这是一轮中的一个录制时点。排序匹配保留重复项，但没有用粒子身份做逐个追踪。数据也不含 GPU 耗时或任意非录制时点。CSV 只摘取三份原记录的该时点及坐标列，页面与文案使用 AI 辅助整理。</p>
 <p>接下来，做 <a href="ta15-cache-cut-exercise.html#check">TA15 缓存切入逐帧自查</a>。切换第 56、57 帧，检查两种区段外回放策略的输出差异。这里换成了另一个实验，不沿用本页的帧号或采样条件。</p><p><a href="./">返回学习站</a></p>
