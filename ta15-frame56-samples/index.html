@@ -25,7 +25,7 @@
 <figure><img src="C1Live.png" alt="C1Live 第56帧最终合成输出" width="640" height="360"><figcaption>实测输出，第 56 帧</figcaption></figure></article>
 </section>
 <p><small>上方 PNG 是完整输出帧，每张包含 MRQ 的时间采样结果。子样本状态来自渲染阶段回调，未单独输出子样本画面或记录精确序列求值时刻。</small></p>
-<h2>动手自查</h2>
+<h2 id="adjacent-frames">沿着第 54–57 帧看状态</h2><p>反序记录中，两个 Niagara Actor 的缓存绑定和运行状态一致。C0 在 8 个回调中均已绑定缓存且为 Active。第 54 帧 0/2 到第 56 帧 0/2，两个短区段一直未绑定缓存，C1 为 Complete，C1Live 为 Active。从第 56 帧 1/2 到第 57 帧 1/2，两组都已绑定缓存且为 Active。</p><p>因此，这次观测只能把状态切换夹在第 56 帧的两次回调之间。第 57 帧的状态读数相同，最终画面的差异仍需用输出图另行比较。</p><h2>动手自查</h2>
 <p>如果只读第二个子样本，能否看出 C1 和 C1Live 在第 56 帧发生过什么差别？</p>
 <details><summary>展开核对</summary><p>第二个子样本中两组都绑定缓存且 Active。区别要回到第一个子样本查，C1 是 Complete，C1Live 是 Active。复查自己的镜头时，记录输出帧号、子样本序号、缓存对象和执行状态，并保留同帧参照。</p></details>
 <h2>实验边界</h2>

@@ -25,7 +25,7 @@
 <figure><img src="C1Live.png" alt="C1Live final output at frame 56" width="640" height="360"><figcaption>MRQ output, frame 56</figcaption></figure></article>
 </section>
 <p><small>The PNGs are final output frames. The status cards come from the per-sample render callback. Individual sample images and exact Sequencer evaluation times were not recorded.</small></p>
-<h2>Try it yourself</h2>
+<h2 id="adjacent-frames">Follow the state from frames 54 to 57</h2><p>The two Niagara Actors reported the same cache binding and execution state in the reversed run. C0 was bound and Active at all eight callbacks. From frame 54 at 0/2 through frame 56 at 0/2, both short sections were unbound: C1 reported Complete and C1Live reported Active. From frame 56 at 1/2 through frame 57 at 1/2, both were bound and Active.</p><p>These observations bracket the state change between the two frame 56 callbacks. The state readings agree at frame 57, while the final images still need a separate comparison.</p><h2>Try it yourself</h2>
 <p>Can you tell C1 and C1Live apart by inspecting the second sample alone?</p>
 <details><summary>Check your answer</summary><p>Both have a cache bound and report Active in the second sample. At the first sample, C1 reports Complete while C1Live reports Active. For your own shot, log the frame, temporal sample index, cache binding, and execution state alongside a same-frame reference.</p></details>
 <h2>Test conditions and limits</h2>
