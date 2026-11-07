@@ -24,7 +24,7 @@
 <tr><td>Camera-cut warm-up</td><td>54–57</td><td>0 (configured in the test)</td><td>On</td></tr>
 <tr><td>Continuous reference</td><td>38–57</td><td>0</td><td>Off</td></tr>
 </tbody></table>
-<p>The camera-cut group sets Engine Warm Up Count to 0 and enables Use Camera Cut for Warm Up. MRQ derives warm-up from the Camera Cut section before output begins. The 0 in the table is the configured value.</p>
+<p>The camera-cut group sets Engine Warm Up Count to 0 and enables Use Camera Cut for Warm Up. MRQ derives warm-up from the Camera Cut section before output begins. The 0 in the table is the configured value. In the v0.3 same-machine rerun, the MRQ initialization log reported 16 warm-up frames for both L1 and L2. L1 used a configured count of 16; L2 used a configured count of 0 and derived its warm-up from the camera cut. The equal counts do not imply identical sequence evaluation.</p>
 <p>Check the camera and temporal-sampling logs, then compare frame 54 of each short render with frame 54 of the continuous reference. Engine warm-up advances the engine. Camera-cut warm-up also evaluates the sequence before output starts. Assess render history and depth-dependent GPU particles separately from this CPU example.</p>
 <p><a href="https://dev.epicgames.com/documentation/unreal-engine/cinematic-rendering-image-quality-settings-in-unreal-engine?lang=en-US">Epic MRQ image quality settings</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/setting-up-pre-roll">Epic pre-roll documentation</a></p>
 <h2>3. Compare playback at cache entry</h2>

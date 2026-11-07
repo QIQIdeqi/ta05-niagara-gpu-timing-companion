@@ -45,7 +45,7 @@
 </tr>
 </tbody>
 </table>
-<p>镜头预热组在配置中写入 Engine Warm Up Count = 0，并开启 Use Camera Cut for Warm Up。开启后，引擎会根据输出起点之前的 Camera Cut 区段计算预热，表中的 0 是写入值。</p>
+<p>镜头预热组在配置中写入 Engine Warm Up Count = 0，并开启 Use Camera Cut for Warm Up。开启后，引擎会根据输出起点之前的 Camera Cut 区段计算预热，表中的 0 是写入值。 在 v0.3 同机复跑日志中，L1 和 L2 都以 16 帧预热进入 WarmingUp。L1 写入 16，L2 写入 0 且由镜头段推导。两组的预热帧数相同，但预热时的序列求值不同。</p>
 <p>先看相机与时间采样日志，再把三条短输出的第 54 帧与连续参照的第 54 帧并排看。引擎预热让引擎推进，但镜头预热还会求值输出起点前的序列。渲染历史、依赖深度的 GPU 粒子和本次 CPU 实验需分别判断。 <a href="https://dev.epicgames.com/documentation/unreal-engine/cinematic-rendering-image-quality-settings-in-unreal-engine?lang=en-US">Epic MRQ 图像质量设置</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/setting-up-pre-roll">Epic 预滚设置</a></p>
 <h2 id="section-2">3. 跑缓存切入对照</h2>
 <ol>
