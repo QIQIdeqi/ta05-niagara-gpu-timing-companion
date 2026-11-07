@@ -57,7 +57,7 @@
 </table>
 <p>镜头预热组在配置中写入 Engine Warm Up Count = 0，并开启 Use Camera Cut for Warm Up。开启后，引擎会根据输出起点之前的 Camera Cut 区段计算预热，表中的 0 是写入值。 在 v0.3 同机复跑日志中，L1 和 L2 都以 16 帧预热进入 WarmingUp。L1 写入 16，L2 写入 0 且由镜头段推导。两组的预热帧数相同，但预热时的序列求值不同。</p>
 <p>先看相机与时间采样日志，再把三条短输出的第 54 帧与连续参照的第 54 帧并排看。引擎预热让引擎推进，但镜头预热还会求值输出起点前的序列。渲染历史、依赖深度的 GPU 粒子和本次 CPU 实验需分别判断。 <a href="https://dev.epicgames.com/documentation/unreal-engine/cinematic-rendering-image-quality-settings-in-unreal-engine?lang=en-US">Epic MRQ 图像质量设置</a> · <a href="https://dev.epicgames.com/documentation/unreal-engine/setting-up-pre-roll">Epic 预滚设置</a></p>
-<h2 id="section-2">3. 跑缓存切入对照</h2><p><a href="ta15-frame56-samples/">补充图解：第 56 帧的两个时间子样本</a>。看反序复测中三种条件的缓存绑定、执行状态和实际年龄。</p>
+<h2 id="section-2">3. 跑缓存切入对照</h2><p><a href="ta15-frame56-samples/">补充图解：第 56 帧的两个时间子样本</a>。看反序复测中三种条件的缓存绑定、执行状态和实际年龄。</p><p>复测时，按输出帧号和子样本序号记录缓存绑定、运行状态和组件实际年龄，再对照同帧 PNG。本例在第 56 帧 0/2 到 1/2 之间观察到两组短区段状态切换。第 57 帧回调状态相同，仍需单独比较最终输出。<a href="ta15-frame56-samples/#adjacent-frames">核对第 54–57 帧记录</a>。</p>
 <ol>
 <li>在 Sequencer 用 Niagara Sim Cache 缓存轨录制测试系统。确保完整区段在目标帧能读到缓存，先渲染一遍确认该组有预期粒子。</li>
 <li>把这条序列复制两份，绑定同一套缓存素材和轨道。保留 C0 完整区段 [0,59)，两份短区段设为 [56,59)，两份都用 Repeat、首循环偏移 224 ticks。先核对两个短区段使用相同的缓存内容和偏移。</li>
@@ -74,5 +74,5 @@
 <p>同机接收验证：从 v0.3 工程包解压到新目录，分别运行预热与缓存脚本，完成 4 组预热和 3 组缓存对照。44 张输出图的前景像素数与同帧掩膜差异均与原记录一致。此验收使用包内已保存的资产及脚本，从空白关卡重搭及异机复现仍待验证。</p><p><a href="ta15-v03-rerun-readings.csv" download>下载 v0.3 逐帧复跑比对表</a></p>
 <p><a href="ta15-offline-companion-zh-en-v1.3.zip" download>下载中英双语离线伴读 ZIP</a>。解压后打开 index.html，可离线阅读手册、切换逐帧对照并核对 CSV。</p>
 <p id="offline-csv-check">要复算第 56 帧，在解压后的根目录打开终端，用 Python 3 运行 <code>python ta15-frame56-samples/check_samples.py</code>。应看到 6 行子样本状态，以及 <code>Zero mask XOR: 12/12</code> 和 <code>Exact RGB: 3/12</code>。脚本汇总已有 CSV，无需安装第三方库。直接比较 PNG 请使用下方的掩膜脚本。</p>
-<h2 id="updates">更新记录</h2><ul><li><strong>离线伴读 v1.2</strong>：新增 CSV 核对脚本，汇总第 56 帧的两次回调及 12 对输出比较。脚本只读 CSV，无需安装 Pillow。</li><li><strong>离线伴读 v1.1</strong>：加入双语子样本图解和数据，区分 MRQ 回调记录与最终输出图。</li></ul>
+<h2 id="updates">更新记录</h2><ul><li><strong>离线伴读 v1.3</strong>：首页补充运行命令，区分 CSV 复算和 PNG 掩膜样例的依赖。</li><li><strong>离线伴读 v1.2</strong>：新增 CSV 核对脚本，汇总第 56 帧的两次回调及 12 对输出比较。脚本只读 CSV，无需安装 Pillow。</li><li><strong>离线伴读 v1.1</strong>：加入双语子样本图解和数据，区分 MRQ 回调记录与最终输出图。</li></ul>
 <p>本文使用 AI 辅助整理。作者工程的对照已实跑；从空白关卡按本手册手动搭建尚未单独验收。</p>
