@@ -60,5 +60,6 @@
 <p><strong>自查</strong>　只看第 57 帧时你会选哪种模式？补看第 56 帧后，把判断改写成一句包含帧号和参照组的话。</p>
 <p><a href="https://zhuanlan.zhihu.com/p/2102409226295551638">TA15 知乎图解</a> · <a href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-cache-cut-exercise.html">公开逐帧练习</a> · <a href="https://qiqideqi.github.io/ta05-niagara-gpu-timing-companion/ta15-frame-readings.csv">44 行实测 CSV</a></p>
 <p><a href="ta15-mask-compare.py" download>下载掩膜复算脚本</a>。需要 Python 与 Pillow（<code>python -m pip install Pillow</code>）。把同一帧的参照图和对照图依次传入 <code>python ta15-mask-compare.py reference.png candidate.png --threshold 30</code>，可得到两图前景数和差异像素位置数。</p>
+<p><a href="ta15-mask-example.zip" download>下载第 57 帧复算样例 ZIP</a>。解压后在该目录运行上面的命令。C0 参照前景为 729，C1Live 为 718，掩膜差异为 11 个像素位置。</p>
 <p>同机接收验证：从 v0.3 工程包解压到新目录，分别运行预热与缓存脚本，完成 4 组预热和 3 组缓存对照。44 张输出图的前景像素数与同帧掩膜差异均与原记录一致。此验收使用包内已保存的资产及脚本，从空白关卡重搭及异机复现仍待验证。</p><p><a href="ta15-v03-rerun-readings.csv" download>下载 v0.3 逐帧复跑比对表</a></p>
 <p>本文使用 AI 辅助整理。作者工程的对照已实跑；从空白关卡按本手册手动搭建尚未单独验收。</p>
